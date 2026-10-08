@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Key Milestones and History</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #eef2f4;
+            color: #16394f;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container3 {
+            min-height: 100vh;
+
+            padding: 75px 8%;
+
+            background:
+                linear-gradient(
+                    rgba(238, 242, 244, 0.96),
+                    rgba(255, 255, 255, 0.98)
+                );
+
+            color: #16394f;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           MAIN HEADING
+        ========================= */
+
+        .container3 > h1 {
+            text-align: center;
+
+            color: #071b2c;
+
+            font-size: 46px;
+
+            letter-spacing: 1.5px;
+
+            margin: 0 0 70px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ORANGE LINE UNDER HEADING */
+
+        .container3 > h1::after {
+            content: "";
+
+            display: block;
+
+            width: 85px;
+            height: 5px;
+
+            background: #ff5b0a;
+
+            margin: 18px auto 0;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 4px 12px rgba(255, 91, 10, 0.25);
+        }
+
+
+        /* =========================
+           HISTORY CARD
+        ========================= */
+
+        .info {
+            position: relative;
+
+            width: 85%;
+
+            max-width: 1100px;
+
+            margin: 0 auto 38px;
+
+            padding: 30px 34px;
+
+            min-height: 170px;
+
+            background: #ffffff;
+
+            border: 1px solid #dce4e8;
+
+            border-left: 6px solid #ff5b0a;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 10px 30px rgba(7, 27, 44, 0.10);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+
+        /* =========================
+           CARD HOVER
+        ========================= */
+
+        .info:hover {
+
+            transform: translateY(-7px);
+
+            border-left-color: #f4a623;
+
+            box-shadow:
+                0 18px 40px rgba(7, 27, 44, 0.16);
+        }
+
+
+        /* =========================
+           IMAGE
+        ========================= */
+
+        .info img {
+
+            float: right;
+
+            width: 270px;
+
+            height: 125px;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            margin-left: 35px;
+
+            margin-bottom: 10px;
+
+            border-radius: 12px;
+
+            border: 3px solid #eef2f4;
+
+            box-shadow:
+                0 8px 22px rgba(7, 27, 44, 0.18);
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+
+        /* IMAGE HOVER */
+
+        .info:hover img {
+
+            transform: scale(1.035);
+
+            border-color: #ff5b0a;
+        }
+
+
+        /* =========================
+           CARD HEADING
+        ========================= */
+
+        .info h3 {
+
+            margin: 0 0 13px;
+
+            color: #174364;
+
+            font-size: 25px;
+
+            font-weight: 750;
+
+            letter-spacing: 0.3px;
+
+            line-height: 1.3;
+        }
+
+
+        /* =========================
+           CARD TEXT
+        ========================= */
+
+        .info p {
+
+            margin: 0;
+
+            color: #4b5963;
+
+            font-size: 16.5px;
+
+            line-height: 1.8;
+
+            font-weight: 400;
+        }
+
+
+        /* =========================
+           TIMELINE CIRCLE
+        ========================= */
+
+        .info::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: -22px;
+
+            top: 30px;
+
+            width: 32px;
+
+            height: 32px;
+
+            background: #ff5b0a;
+
+            border: 5px solid #eef2f4;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 2px #ff5b0a,
+                0 4px 12px rgba(255, 91, 10, 0.25);
+
+            z-index: 3;
+        }
+
+
+        /* =========================
+           TIMELINE LINE
+        ========================= */
+
+        .info::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: -7px;
+
+            top: 62px;
+
+            height: calc(100% + 38px);
+
+            width: 3px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #ff5b0a,
+                    rgba(255, 91, 10, 0.18)
+                );
+
+            z-index: 1;
+        }
+
+
+        .info:last-child::after {
+            display: none;
+        }
+
+
+        /* =========================
+           FIRST CARD SPECIAL STYLE
+        ========================= */
+
+        .info:first-of-type {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #f8fafb
+                );
+
+            border-left-color: #ff5b0a;
+        }
+
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .container3 {
+                padding: 60px 5%;
+            }
+
+            .info {
+                width: 90%;
+            }
+
+            .info img {
+                width: 230px;
+                height: 120px;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+
+            .container3 {
+
+                padding: 45px 20px;
+
+                background:
+                    linear-gradient(
+                        #eef2f4,
+                        #ffffff
+                    );
+            }
+
+
+            .container3 > h1 {
+
+                font-size: 32px;
+
+                margin-bottom: 45px;
+
+                line-height: 1.2;
+            }
+
+
+            .container3 > h1::after {
+
+                width: 65px;
+
+                height: 4px;
+
+                margin-top: 14px;
+            }
+
+
+            .info {
+
+                width: 100%;
+
+                padding: 22px;
+
+                margin-bottom: 25px;
+
+                border-left: 5px solid #ff5b0a;
+
+                border-radius: 13px;
+            }
+
+
+            /* MOBILE IMAGE */
+
+            .info img {
+
+                float: none;
+
+                display: block;
+
+                width: 100%;
+
+                height: 200px;
+
+                object-fit: cover;
+
+                object-position: center;
+
+                margin: 0 0 20px;
+
+                border-radius: 12px;
+            }
+
+
+            .info h3 {
+
+                font-size: 21px;
+
+                margin-bottom: 10px;
+            }
+
+
+            .info p {
+
+                font-size: 15px;
+
+                line-height: 1.7;
+            }
+
+
+            .info::before,
+            .info::after {
+
+                display: none;
+            }
+        }
+
+
+        /* =========================
+           SMALL MOBILE
+        ========================= */
+
+        @media (max-width: 550px) {
+
+            .container3 {
+
+                padding: 38px 15px;
+            }
+
+
+            .container3 > h1 {
+
+                font-size: 27px;
+
+                letter-spacing: 1px;
+
+                margin-bottom: 35px;
+            }
+
+
+            .info {
+
+                padding: 18px;
+
+                margin-bottom: 20px;
+            }
+
+
+            .info img {
+
+                height: 175px;
+            }
+
+
+            .info h3 {
+
+                font-size: 19px;
+            }
+
+
+            .info p {
+
+                font-size: 14px;
+
+                line-height: 1.65;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container3">
+
+
+        <h1>Key Milestones & History</h1>
+
+
+        <!-- 1986 -->
+
+        <div class="info">
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZzfuVjfcltJzyJ4tBK8CtFlcogD8Ozpc20lGPm0quGQ&s=10"
+                alt="Mountain Expedition"
+            >
+
+            <h3>1986 — Founding</h3>
+
+            <p>
+                Todd Burleson established the company to focus on safe,
+                well-planned international expeditions, careful guide-to-client
+                ratios, and structured itineraries.
+            </p>
+
+        </div>
+
+
+        <!-- EARLY HIMALAYAN SUCCESSES -->
+
+        <div class="info">
+
+            <h3>Early Himalayan Successes</h3>
+
+            <p>
+                The company built its reputation on strict safety standards
+                and logistics during early expeditions in the Himalayas.
+            </p>
+
+        </div>
+
+
+        <!-- 1992 -->
+
+        <div class="info">
+
+            <h3>1992 — Everest Operations</h3>
+
+            <p>
+                Alpine Ascents International began operating regular commercial
+                expeditions to Mount Everest, eventually guiding over 280
+                climbers to the summit.
+            </p>
+
+        </div>
+
+
+        <!-- 1996 -->
+
+        <div class="info">
+
+            <h3>1996 — Everest Disaster</h3>
+
+            <p>
+                The team played a vital supportive role in rescue efforts
+                during the infamous 1996 Everest storm, emerging from the
+                tragedy with an even stronger emphasis on safety culture.
+            </p>
+
+        </div>
+
+
+        <!-- EXPANSION -->
+
+        <div class="info">
+
+            <h3>Expansion</h3>
+
+            <p>
+                Over four decades, the company grew into a Seven Summits
+                operator, offering over 30 international expeditions and
+                numerous mountaineering training courses in the Pacific
+                Northwest, such as on Mount Rainier and Mount Baker.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

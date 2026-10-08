@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guidelines | Alpine Ascents</title>
+
+    <style>
+
+        /* =========================================================
+           ALPINE ASCENTS MASTER THEME
+        ========================================================= */
+
+        :root {
+            --dark-header: #363636;
+            --deep-navy: #071b2c;
+            --navy: #16394f;
+            --blue: #174364;
+
+            --orange: #ff5b0a;
+            --orange-light: #f4a623;
+
+            --light-bg: #eef2f4;
+            --white: #ffffff;
+
+            --text: #4b5963;
+            --border: #dce4e8;
+
+            --shadow:
+                0 10px 28px rgba(7, 27, 44, 0.08);
+        }
+
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            background: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            background: var(--dark-header);
+            color: #ffffff;
+
+            padding: 17px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.18);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--orange);
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 520px;
+
+            background:
+                linear-gradient(
+                    rgba(7, 27, 44, 0.76),
+                    rgba(7, 27, 44, 0.76)
+                ),
+                url("images/mountain.jpg") center/cover no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 58px;
+            margin-bottom: 22px;
+
+            letter-spacing: 2px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+        .hero-content h1::after {
+            content: "";
+
+            display: block;
+
+            width: 90px;
+            height: 5px;
+
+            background: var(--orange);
+
+            border-radius: 10px;
+
+            margin: 20px auto 0;
+        }
+
+        .hero-content p {
+            font-size: 19px;
+
+            color: #f1f4f6;
+
+            max-width: 780px;
+
+            margin: 22px auto 0;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .intro {
+            max-width: 1100px;
+
+            margin: 70px auto 35px;
+
+            padding: 0 25px;
+
+            text-align: center;
+        }
+
+        .intro h2 {
+            color: var(--deep-navy);
+
+            font-size: 36px;
+
+            margin-bottom: 20px;
+
+            font-weight: 800;
+        }
+
+        .intro h2::after {
+            content: "";
+
+            display: block;
+
+            width: 65px;
+            height: 4px;
+
+            background: var(--orange);
+
+            border-radius: 10px;
+
+            margin: 13px auto 0;
+        }
+
+        .intro p {
+            color: var(--text);
+
+            font-size: 17px;
+
+            line-height: 1.85;
+        }
+
+
+        /* =========================================================
+           FIRST GUIDELINES SECTION
+        ========================================================= */
+
+        .guidelines {
+            max-width: 1150px;
+
+            margin: 40px auto 80px;
+
+            padding: 0 20px;
+        }
+
+        .guideline-card {
+            background: var(--white);
+
+            margin-bottom: 26px;
+
+            padding: 34px;
+
+            border-left: 6px solid var(--orange);
+
+            border-radius: 14px;
+
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .guideline-card:hover {
+            transform: translateY(-5px);
+
+            border-left-color: var(--orange-light);
+
+            box-shadow:
+                0 17px 35px rgba(7, 27, 44, 0.13);
+        }
+
+        .guideline-card h3 {
+            color: var(--blue);
+
+            font-size: 25px;
+
+            margin-bottom: 14px;
+
+            font-weight: 750;
+        }
+
+        .guideline-card p {
+            color: var(--text);
+
+            margin-bottom: 14px;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        .guideline-card ul {
+            padding-left: 24px;
+            margin-top: 10px;
+        }
+
+        .guideline-card li {
+            margin-bottom: 8px;
+
+            color: #4c5559;
+
+            font-size: 15.5px;
+        }
+
+        .guideline-card li::marker {
+            color: var(--orange);
+            font-size: 16px;
+        }
+
+
+        /* =========================================================
+           IMPORTANT SAFETY BOX
+        ========================================================= */
+
+        .important {
+            background:
+                linear-gradient(
+                    135deg,
+                    #071b2c,
+                    #16394f
+                );
+
+            color: white;
+
+            padding: 42px;
+
+            margin: 50px auto;
+
+            max-width: 1100px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 15px 35px rgba(7, 27, 44, 0.18);
+
+            border-left: 6px solid var(--orange);
+        }
+
+        .important h2 {
+            color: var(--orange-light);
+
+            margin-bottom: 15px;
+
+            font-size: 27px;
+        }
+
+        .important p {
+            color: #e9eef1;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           SECOND GUIDELINES SECTION
+        ========================================================= */
+
+        .guidelines-2 {
+            background: var(--white);
+
+            padding: 80px 7%;
+        }
+
+        .container-2 {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+
+        /* SECTION TITLE */
+
+        .section-title-2 {
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+        .section-title-2 h2 {
+            font-size: 42px;
+
+            color: var(--deep-navy);
+
+            margin-bottom: 15px;
+
+            font-weight: 800;
+        }
+
+        .section-title-2 h2::after {
+            content: "";
+
+            display: block;
+
+            width: 70px;
+            height: 4px;
+
+            background: var(--orange);
+
+            border-radius: 10px;
+
+            margin: 14px auto 0;
+        }
+
+        .section-title-2 p {
+            max-width: 750px;
+
+            margin: 18px auto 0;
+
+            color: var(--text);
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           SECOND GUIDELINES GRID
+        ========================================================= */
+
+        .guidelines-grid-2 {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =========================================================
+           SECOND GUIDELINE CARD
+        ========================================================= */
+
+        .guideline-card-2 {
+            background: var(--light-bg);
+
+            padding: 30px;
+
+            border-left: 5px solid var(--orange);
+
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .guideline-card-2:hover {
+            transform: translateY(-6px);
+
+            border-left-color: var(--orange-light);
+
+            box-shadow:
+                0 12px 28px rgba(7, 27, 44, 0.12);
+        }
+
+        .guideline-card-2 h3 {
+            color: var(--blue);
+
+            font-size: 22px;
+
+            margin-bottom: 12px;
+
+            font-weight: 750;
+        }
+
+        .guideline-card-2 p {
+            color: var(--text);
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            margin: 0;
+        }
+
+
+        /* =========================================================
+           SECOND SAFETY NOTICE
+        ========================================================= */
+
+        .guidelines-notice-2 {
+            margin-top: 40px;
+
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #071b2c,
+                    #16394f
+                );
+
+            color: #ffffff;
+
+            border-radius: 14px;
+
+            text-align: center;
+
+            border-left: 6px solid var(--orange);
+
+            box-shadow:
+                0 12px 30px rgba(7, 27, 44, 0.15);
+        }
+
+        .guidelines-notice-2 h3 {
+            color: var(--orange-light);
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+        .guidelines-notice-2 p {
+            color: #d7e0e6;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            max-width: 900px;
+
+            margin: auto;
+        }
+
+
+        /* =========================================================
+           CHECKLIST SECTION
+        ========================================================= */
+
+        .checklist-section {
+            background: #e7ecef;
+
+            padding: 75px 20px;
+        }
+
+        .checklist {
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .checklist h2 {
+            text-align: center;
+
+            color: var(--deep-navy);
+
+            font-size: 35px;
+
+            margin-bottom: 42px;
+
+            font-weight: 800;
+        }
+
+        .checklist h2::after {
+            content: "";
+
+            display: block;
+
+            width: 70px;
+            height: 4px;
+
+            background: var(--orange);
+
+            border-radius: 10px;
+
+            margin: 13px auto 0;
+        }
+
+        .check-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+        .check-item {
+            background: var(--white);
+
+            padding: 26px;
+
+            border-radius: 13px;
+
+            border-top: 5px solid var(--orange);
+
+            box-shadow:
+                0 8px 24px rgba(7, 27, 44, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .check-item:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 30px rgba(7, 27, 44, 0.13);
+        }
+
+        .check-item h4 {
+            color: var(--blue);
+
+            margin-bottom: 10px;
+
+            font-size: 19px;
+
+            font-weight: 750;
+        }
+
+        .check-item p {
+            color: var(--text);
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #03111d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+        footer h3 {
+            color: var(--orange);
+
+            margin-bottom: 9px;
+
+            font-size: 23px;
+        }
+
+        footer p {
+            color: #cbd5da;
+
+            margin-bottom: 5px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 17px 5%;
+            }
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 45px;
+            }
+
+            .guidelines-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .check-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title-2 h2 {
+                font-size: 36px;
+            }
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                min-height: 420px;
+
+                padding: 40px 18px;
+            }
+
+            .hero-content h1 {
+                font-size: 35px;
+
+                line-height: 1.2;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+
+                line-height: 1.7;
+            }
+
+            .intro {
+                margin-top: 50px;
+            }
+
+            .intro h2 {
+                font-size: 29px;
+            }
+
+            .intro p {
+                font-size: 15px;
+            }
+
+            .guidelines {
+                padding: 0 15px;
+
+                margin-top: 30px;
+            }
+
+            .guideline-card {
+                padding: 25px 20px;
+
+                border-radius: 12px;
+            }
+
+            .guideline-card h3 {
+                font-size: 21px;
+            }
+
+            .guideline-card p {
+                font-size: 15px;
+            }
+
+            .guideline-card li {
+                font-size: 14.5px;
+            }
+
+            .important {
+                margin: 35px 15px;
+
+                padding: 28px 22px;
+
+                border-radius: 12px;
+            }
+
+            .important h2 {
+                font-size: 23px;
+            }
+
+            .important p {
+                font-size: 14.5px;
+            }
+
+            .guidelines-2 {
+                padding: 60px 6%;
+            }
+
+            .section-title-2 {
+                margin-bottom: 35px;
+            }
+
+            .section-title-2 h2 {
+                font-size: 30px;
+            }
+
+            .section-title-2 p {
+                font-size: 15px;
+            }
+
+            .guideline-card-2 {
+                padding: 25px;
+            }
+
+            .guideline-card-2 h3 {
+                font-size: 20px;
+            }
+
+            .guideline-card-2 p {
+                font-size: 15px;
+            }
+
+            .guidelines-notice-2 {
+                padding: 25px 20px;
+            }
+
+            .guidelines-notice-2 h3 {
+                font-size: 22px;
+            }
+
+            .guidelines-notice-2 p {
+                font-size: 15px;
+            }
+
+            .checklist-section {
+                padding: 55px 15px;
+            }
+
+            .checklist h2 {
+                font-size: 29px;
+            }
+
+            .check-item {
+                padding: 22px;
+            }
+        }
+
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 450px) {
+
+            header {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero-content h1 {
+                font-size: 29px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .intro h2 {
+                font-size: 26px;
+            }
+
+            .guideline-card {
+                padding: 21px 17px;
+            }
+
+            .guideline-card h3 {
+                font-size: 19px;
+            }
+
+            .guideline-card ul {
+                padding-left: 21px;
+            }
+
+            .important {
+                padding: 24px 18px;
+            }
+
+            .guidelines-2 {
+                padding: 50px 5%;
+            }
+
+            .guideline-card-2 {
+                padding: 21px 18px;
+            }
+
+            .guideline-card-2 h3 {
+                font-size: 19px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header>
+
+        <div class="logo">
+            Alpine <span>Ascents</span>
+        </div>
+
+        <nav>
+
+            <a href="#safety">Safety</a>
+
+            <a href="#environment">Environment</a>
+
+            <a href="#equipment">Equipment</a>
+
+            <a href="#team">Teamwork</a>
+
+            <a href="#Guidelines">Guidelines</a>
+
+            <a href="#checklist">Checklist</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Mountain Guidelines</h1>
+
+            <p>
+                Responsible climbing, preparation, safety and respect
+                for the mountains are at the heart of every Alpine Ascents expedition.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         INTRO
+    ========================================================= -->
+
+    <section class="intro">
+
+        <h2>Our Mountain Guidelines</h2>
+
+        <p>
+            Mountain environments demand preparation, awareness and responsible
+            decision-making. These guidelines are designed to help climbers,
+            trekkers and expedition members prepare for challenging mountain
+            environments while respecting fellow climbers, guides, local
+            communities and the natural world.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================================
+         MAIN GUIDELINES
+    ========================================================= -->
+
+    <section class="guidelines">
+
+
+        <!-- SAFETY -->
+
+        <div class="guideline-card" id="safety">
+
+            <h3>01. Mountain Safety</h3>
+
+            <p>
+                Safety should remain the first priority throughout every
+                climbing or trekking journey. Mountain conditions can change
+                quickly, so participants should remain alert and follow the
+                instructions provided by qualified guides.
+            </p>
+
+            <ul>
+
+                <li>
+                    Always follow the instructions of your expedition leader.
+                </li>
+
+                <li>
+                    Monitor changing weather and mountain conditions.
+                </li>
+
+                <li>
+                    Stay with the designated climbing or trekking group.
+                </li>
+
+                <li>
+                    Never take unnecessary risks to reach a summit.
+                </li>
+
+                <li>
+                    Report injuries, illness or safety concerns immediately.
+                </li>
+
+                <li>
+                    Understand emergency procedures before starting an expedition.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- PHYSICAL PREPARATION -->
+
+        <div class="guideline-card">
+
+            <h3>02. Physical Preparation</h3>
+
+            <p>
+                Successful mountain journeys require appropriate physical
+                preparation. Climbers should understand the physical demands
+                of their chosen route and prepare accordingly.
+            </p>
+
+            <ul>
+
+                <li>Develop cardiovascular endurance before the expedition.</li>
+
+                <li>Build strength appropriate for carrying equipment.</li>
+
+                <li>Practice hiking on varied terrain.</li>
+
+                <li>Prepare for long periods of physical activity.</li>
+
+                <li>Allow adequate rest and recovery during training.</li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- EQUIPMENT -->
+
+        <div class="guideline-card" id="equipment">
+
+            <h3>03. Equipment &amp; Gear</h3>
+
+            <p>
+                Appropriate equipment can significantly improve safety and
+                comfort in mountain environments. Every participant should
+                understand how to use their equipment before an expedition.
+            </p>
+
+            <ul>
+
+                <li>Use appropriate footwear for the terrain.</li>
+
+                <li>Carry suitable clothing for changing weather conditions.</li>
+
+                <li>Inspect technical climbing equipment before use.</li>
+
+                <li>Keep essential personal equipment accessible.</li>
+
+                <li>Learn how to properly use required safety equipment.</li>
+
+                <li>Do not use damaged or improperly maintained equipment.</li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- WEATHER -->
+
+        <div class="guideline-card">
+
+            <h3>04. Weather Awareness</h3>
+
+            <p>
+                Weather is one of the most important factors in mountain
+                travel. Conditions can change rapidly, especially at higher
+                elevations.
+            </p>
+
+            <ul>
+
+                <li>Check reliable weather forecasts before departure.</li>
+
+                <li>Continue monitoring conditions during the journey.</li>
+
+                <li>Be prepared for sudden changes in temperature.</li>
+
+                <li>Understand the risks associated with storms and high winds.</li>
+
+                <li>
+                    Respect guide decisions when weather conditions become unsafe.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ALTITUDE -->
+
+        <div class="guideline-card">
+
+            <h3>05. Altitude Awareness</h3>
+
+            <p>
+                Higher elevations present unique challenges. Climbers should
+                understand that altitude affects people differently and should
+                communicate any unusual symptoms to expedition leaders.
+            </p>
+
+            <ul>
+
+                <li>Ascend according to the expedition's planned schedule.</li>
+
+                <li>Stay properly hydrated.</li>
+
+                <li>Allow appropriate time for acclimatization.</li>
+
+                <li>Communicate changes in how you feel.</li>
+
+                <li>
+                    Follow the guide team's instructions regarding altitude.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ENVIRONMENT -->
+
+        <div class="guideline-card" id="environment">
+
+            <h3>06. Protecting the Mountain Environment</h3>
+
+            <p>
+                Mountains are fragile ecosystems. Every visitor has a
+                responsibility to minimize their environmental impact and
+                preserve the landscape for future generations.
+            </p>
+
+            <ul>
+
+                <li>Pack out all personal waste.</li>
+
+                <li>Use designated trails and established routes.</li>
+
+                <li>Avoid damaging plants and natural features.</li>
+
+                <li>Respect wildlife and maintain appropriate distance.</li>
+
+                <li>Minimize unnecessary noise.</li>
+
+                <li>Leave campsites and climbing areas clean.</li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- LEAVE NO TRACE -->
+
+        <div class="guideline-card">
+
+            <h3>07. Leave No Trace</h3>
+
+            <p>
+                Responsible mountain travel means leaving the environment
+                as close as possible to its original condition.
+            </p>
+
+            <ul>
+
+                <li>Do not leave rubbish behind.</li>
+
+                <li>Respect established camping areas.</li>
+
+                <li>Avoid disturbing natural habitats.</li>
+
+                <li>Keep water sources clean.</li>
+
+                <li>
+                    Take responsibility for your own environmental impact.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- TEAMWORK -->
+
+        <div class="guideline-card" id="team">
+
+            <h3>08. Teamwork &amp; Communication</h3>
+
+            <p>
+                Successful expeditions depend on communication and cooperation.
+                Every member contributes to the safety and overall experience
+                of the team.
+            </p>
+
+            <ul>
+
+                <li>Communicate clearly with guides and teammates.</li>
+
+                <li>Respect different experience levels within the group.</li>
+
+                <li>Assist teammates when appropriate.</li>
+
+                <li>Share important safety information.</li>
+
+                <li>
+                    Remain patient during difficult sections of the journey.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- LOCAL COMMUNITIES -->
+
+        <div class="guideline-card">
+
+            <h3>09. Respect for Local Communities</h3>
+
+            <p>
+                Mountain regions are home to communities with unique cultures,
+                traditions and ways of life. Visitors should behave respectfully
+                and support responsible tourism practices.
+            </p>
+
+            <ul>
+
+                <li>Respect local customs and traditions.</li>
+
+                <li>
+                    Ask permission before photographing people when appropriate.
+                </li>
+
+                <li>Respect private property and community spaces.</li>
+
+                <li>Support responsible local businesses.</li>
+
+                <li>Treat local staff and mountain workers with respect.</li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ETHICS -->
+
+        <div class="guideline-card">
+
+            <h3>10. Responsible Climbing Ethics</h3>
+
+            <p>
+                Good climbing ethics help protect both people and the mountain
+                environment. Climbers should make decisions that respect other
+                teams and established practices.
+            </p>
+
+            <ul>
+
+                <li>Respect other climbers on shared routes.</li>
+
+                <li>
+                    Communicate before passing or changing positions.
+                </li>
+
+                <li>Do not interfere with another team's climb.</li>
+
+                <li>
+                    Use established anchors and routes responsibly.
+                </li>
+
+                <li>
+                    Prioritize safety over speed or summit pressure.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================================================
+         IMPORTANT SAFETY PRINCIPLE
+    ========================================================= -->
+
+    <section class="important">
+
+        <h2>Important Safety Principle</h2>
+
+        <p>
+            A successful expedition is not defined only by reaching a summit.
+            Safe decision-making, preparation, teamwork and responsible
+            mountain travel are equally important. Climbers should always be
+            prepared to change plans when conditions require it.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================================
+         SECOND GUIDELINES
+    ========================================================= -->
+
+    <section class="guidelines-2" id="Guidelines">
+
+        <div class="container-2">
+
+
+            <div class="section-title-2">
+
+                <h2>Mountain Trekking Guidelines</h2>
+
+                <p>
+                    Follow these important guidelines to enjoy a safe,
+                    responsible and well-planned mountain trekking experience.
+                </p>
+
+            </div>
+
+
+            <div class="guidelines-grid-2">
+
+
+                <!-- GUIDELINE 1 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>1. Plan Your Route</h3>
+
+                    <p>
+                        Research the mountain, route difficulty, distance,
+                        elevation and expected travel time before starting
+                        your trek. Prepare a clear route plan and consider
+                        alternative plans if conditions change.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 2 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>2. Check Weather Conditions</h3>
+
+                    <p>
+                        Always check the latest mountain weather forecast
+                        before leaving. Mountain weather can change quickly,
+                        so be prepared to change or postpone your plans when
+                        conditions become unsafe.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 3 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>3. Carry Essential Equipment</h3>
+
+                    <p>
+                        Carry suitable clothing, footwear, navigation tools,
+                        lighting, food, water and emergency supplies. Equipment
+                        should match the route, season, difficulty and length
+                        of the trip.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 4 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>4. Use Navigation Skills</h3>
+
+                    <p>
+                        Learn how to use a map and compass and keep track of
+                        your position throughout the journey. GPS and mobile
+                        devices can assist with navigation but should not be
+                        your only navigation method.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 5 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>5. Travel According to Your Ability</h3>
+
+                    <p>
+                        Choose a route that matches your experience, fitness,
+                        technical skills and available time. Do not continue
+                        simply because you have already started a climb.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 6 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>6. Inform Someone About Your Trip</h3>
+
+                    <p>
+                        Share your itinerary with a trusted person before
+                        leaving. Include your planned route, expected return
+                        time and other important trip details.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 7 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>7. Be Prepared for Emergencies</h3>
+
+                    <p>
+                        Carry appropriate emergency and first-aid supplies.
+                        Keep extra lighting, batteries, food and clothing
+                        available for unexpected delays or changing conditions.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 8 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>8. Respect Mountain Hazards</h3>
+
+                    <p>
+                        Be aware of hazards such as steep terrain, falling
+                        rocks, avalanches, unstable snow, ice and poor
+                        visibility. Avoid routes or conditions that exceed
+                        your skills and preparation.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 9 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>9. Plan Your Descent</h3>
+
+                    <p>
+                        Remember that reaching the summit is only part of the
+                        journey. Keep enough time, energy and daylight for a
+                        safe return and review your route during the climb.
+                    </p>
+
+                </div>
+
+
+                <!-- GUIDELINE 10 -->
+
+                <div class="guideline-card-2">
+
+                    <h3>10. Protect the Mountain Environment</h3>
+
+                    <p>
+                        Respect wildlife, vegetation, trails and natural
+                        surroundings. Keep the mountains clean, avoid damaging
+                        the environment and follow local regulations.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SAFETY NOTICE -->
+
+            <div class="guidelines-notice-2">
+
+                <h3>Important Safety Notice</h3>
+
+                <p>
+                    Mountain trekking involves changing weather, difficult
+                    terrain and other natural hazards. Proper preparation,
+                    appropriate equipment, suitable skills and responsible
+                    decision-making are essential. When conditions become
+                    unsafe, prioritize safety and turn back or seek qualified
+                    assistance.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CHECKLIST
+    ========================================================= -->
+
+    <section class="checklist-section" id="checklist">
+
+        <div class="checklist">
+
+            <h2>Before You Leave</h2>
+
+            <div class="check-grid">
+
+
+                <div class="check-item">
+
+                    <h4>✔ Physical Preparation</h4>
+
+                    <p>
+                        Make sure your training matches the physical demands
+                        of the planned expedition.
+                    </p>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <h4>✔ Equipment Check</h4>
+
+                    <p>
+                        Inspect clothing, footwear, technical equipment and
+                        personal supplies before departure.
+                    </p>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <h4>✔ Weather Check</h4>
+
+                    <p>
+                        Review current forecasts and understand the expected
+                        mountain conditions.
+                    </p>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <h4>✔ Emergency Planning</h4>
+
+                    <p>
+                        Understand communication procedures and know what to
+                        do if an emergency occurs.
+                    </p>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <h4>✔ Environmental Responsibility</h4>
+
+                    <p>
+                        Prepare to carry your waste out and minimize your
+                        impact on the mountain environment.
+                    </p>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <h4>✔ Team Communication</h4>
+
+                    <p>
+                        Make sure you understand your team's route,
+                        responsibilities and communication procedures.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <h3>Alpine Ascents</h3>
+
+        <p>
+            Explore responsibly. Climb safely. Respect the mountains.
+        </p>
+
+        <p>
+            © 2026 Alpine Ascents — Mountain Guidelines
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

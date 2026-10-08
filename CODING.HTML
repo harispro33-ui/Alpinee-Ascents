@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Records & Achievements | Alpine Ascents</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Roboto", Arial, sans-serif;
+            color: #202b31;
+            background: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .header {
+            min-height: 85px;
+            background: #363636;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: relative;
+            z-index: 1000;
+
+            border-bottom: 3px solid #ff5b0a;
+
+            transition: 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: #071b2c;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            font-family: "Oswald", sans-serif;
+            font-size: 25px;
+            line-height: 0.82;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            font-size: 15px;
+            letter-spacing: 3px;
+            color: #ff5b0a;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .header nav a {
+            font-family: "Oswald", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            color: #ffffff;
+
+            padding: 30px 0;
+
+            transition: 0.3s ease;
+        }
+
+        .header nav a:hover,
+        .header nav .active {
+            color: #ff5b0a;
+        }
+
+        .contact-btn {
+            background: #ff5b0a;
+            color: #ffffff;
+
+            padding: 13px 21px;
+
+            border-radius: 6px;
+
+            font-family: "Oswald", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+
+            transition: 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #f4a623;
+            color: #071b2c;
+        }
+
+
+        /* =========================================
+           MOBILE MENU BUTTON
+        ========================================= */
+
+        .menu-toggle {
+            display: none;
+
+            border: none;
+            outline: none;
+
+            background: #ff5b0a;
+            color: #ffffff;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 6px;
+
+            font-size: 22px;
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: #f4a623;
+            color: #071b2c;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            min-height: 520px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(7, 27, 44, 0.96),
+                    rgba(7, 27, 44, 0.70),
+                    rgba(7, 27, 44, 0.25)
+                ),
+                url("https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 91, 10, 0.12),
+                    transparent 45%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 145px 30px;
+        }
+
+        .small-title {
+            color: #ff5b0a;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 17px;
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            color: #ffffff;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: clamp(55px, 7vw, 100px);
+
+            line-height: 0.88;
+
+            font-weight: 700;
+
+            letter-spacing: -1px;
+        }
+
+        .hero-text {
+            color: #f2f5f6;
+
+            max-width: 580px;
+
+            margin-top: 30px;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           GENERAL CONTAINER
+        ========================================= */
+
+        .section-container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+
+        /* =========================================
+           INTRO
+        ========================================= */
+
+        .intro {
+            padding: 100px 0;
+
+            background: #ffffff;
+        }
+
+        .intro .section-container {
+            display: grid;
+
+            grid-template-columns: 40% 60%;
+
+            gap: 70px;
+        }
+
+        .intro-heading span,
+        .section-title span,
+        .feature-content > span {
+            color: #ff5b0a;
+
+            font-family: "Oswald", sans-serif;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            font-size: 14px;
+        }
+
+        .intro-heading h2,
+        .section-title h2,
+        .feature-content h2 {
+            font-family: "Oswald", sans-serif;
+
+            font-size: 52px;
+
+            line-height: 0.95;
+
+            margin-top: 15px;
+
+            color: #071b2c;
+        }
+
+        .intro-heading::after,
+        .section-title::after {
+            content: "";
+
+            display: block;
+
+            width: 65px;
+            height: 4px;
+
+            background: #ff5b0a;
+
+            margin-top: 25px;
+
+            border-radius: 5px;
+        }
+
+        .intro-text {
+            padding-top: 35px;
+        }
+
+        .intro-text p {
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            color: #58656b;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================
+           STATS
+        ========================================= */
+
+        .stats {
+            background: #071b2c;
+
+            color: #ffffff;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: "";
+
+            position: absolute;
+
+            left: -100px;
+            top: -100px;
+
+            width: 450px;
+            height: 450px;
+
+            background: rgba(255, 91, 10, 0.10);
+
+            transform: rotate(25deg);
+
+            border-radius: 50%;
+        }
+
+        .stats::after {
+            content: "";
+
+            position: absolute;
+
+            right: -150px;
+            bottom: -180px;
+
+            width: 400px;
+            height: 400px;
+
+            border: 70px solid rgba(244, 166, 35, 0.08);
+
+            border-radius: 50%;
+        }
+
+        .stats-container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 65px 30px;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat {
+            text-align: center;
+
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
+
+            padding: 10px 20px;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .number {
+            display: block;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 48px;
+
+            font-weight: 600;
+
+            color: #ff5b0a;
+        }
+
+        .label {
+            display: block;
+
+            margin-top: 8px;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 13px;
+
+            letter-spacing: 1.5px;
+
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           RECORDS
+        ========================================= */
+
+        .records {
+            padding: 105px 0;
+
+            background: #eef2f4;
+        }
+
+        .section-title {
+            margin-bottom: 55px;
+        }
+
+        .record-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .record-card {
+            background: #ffffff;
+
+            padding: 35px;
+
+            min-height: 360px;
+
+            position: relative;
+
+            border-top: 4px solid #ff5b0a;
+
+            border-radius: 12px;
+
+            transition: 0.3s ease;
+
+            box-shadow: 0 7px 25px rgba(7, 27, 44, 0.08);
+        }
+
+        .record-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow: 0 18px 40px rgba(7, 27, 44, 0.15);
+        }
+
+        .record-number {
+            font-family: "Oswald", sans-serif;
+
+            font-size: 17px;
+
+            color: #ff5b0a;
+
+            margin-bottom: 28px;
+
+            font-weight: 600;
+        }
+
+        .record-card h3 {
+            font-family: "Oswald", sans-serif;
+
+            font-size: 30px;
+
+            color: #071b2c;
+
+            margin-bottom: 8px;
+        }
+
+        .record-date {
+            color: #174364;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 20px;
+        }
+
+        .record-card p:not(.record-date) {
+            color: #66747a;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        .record-card a {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            color: #ff5b0a;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s ease;
+        }
+
+        .record-card a:hover {
+            color: #071b2c;
+            transform: translateX(5px);
+        }
+
+        .record-message {
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #eef2f4;
+
+            border-left: 4px solid #ff5b0a;
+
+            border-radius: 6px;
+        }
+
+        .record-message p {
+            margin: 0;
+
+            color: #58656b !important;
+
+            font-size: 14px !important;
+        }
+
+
+        /* =========================================
+           FEATURE
+        ========================================= */
+
+        .feature {
+            display: grid;
+
+            grid-template-columns: 50% 50%;
+
+            min-height: 530px;
+        }
+
+        .feature-image {
+            background:
+                linear-gradient(
+                    rgba(7, 27, 44, 0.25),
+                    rgba(7, 27, 44, 0.25)
+                ),
+                url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+        .feature-content {
+            background: #071b2c;
+
+            color: #ffffff;
+
+            padding: 90px 10%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-content > span {
+            color: #ff5b0a;
+        }
+
+        .feature-content h2 {
+            color: #ffffff;
+
+            margin-bottom: 30px;
+        }
+
+        .feature-content p {
+            color: #cbd6da;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            max-width: 500px;
+
+            margin-bottom: 35px;
+        }
+
+        .orange-btn {
+            display: inline-block;
+
+            width: fit-content;
+
+            padding: 14px 25px;
+
+            background: #ff5b0a;
+
+            color: #ffffff;
+
+            border-radius: 6px;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s ease;
+        }
+
+        .orange-btn:hover {
+            background: #f4a623;
+
+            color: #071b2c;
+        }
+
+
+        /* =========================================
+           NEWSLETTER
+        ========================================= */
+
+        .newsletter {
+            background: #f4a623;
+
+            padding: 35px 30px;
+        }
+
+        .newsletter-content {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .newsletter h2 {
+            font-family: "Oswald", sans-serif;
+
+            font-size: 27px;
+
+            font-weight: 500;
+
+            color: #071b2c;
+        }
+
+        .newsletter button {
+            border: 0;
+
+            background: #071b2c;
+
+            color: #ffffff;
+
+            padding: 13px 28px;
+
+            border-radius: 6px;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background: #363636;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background: #03111d;
+
+            color: #ffffff;
+
+            padding: 50px 6%;
+
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: "Oswald", sans-serif;
+
+            font-size: 24px;
+
+            font-weight: 600;
+
+            margin-bottom: 25px;
+
+            color: #ffffff;
+        }
+
+        .footer-logo::after {
+            content: "";
+
+            display: block;
+
+            width: 45px;
+            height: 3px;
+
+            background: #ff5b0a;
+
+            margin: 12px auto 0;
+
+            border-radius: 4px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            font-family: "Oswald", sans-serif;
+
+            font-size: 13px;
+
+            color: #b9c8cd;
+
+            transition: 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff5b0a;
+        }
+
+        footer p {
+            color: #73858c;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           SCROLL REVEAL
+        ========================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .header {
+                padding: 0 25px;
+            }
+
+            .header nav {
+                display: none;
+
+                position: absolute;
+
+                top: 85px;
+                left: 0;
+                right: 0;
+
+                background: #071b2c;
+
+                flex-direction: column;
+
+                gap: 0;
+
+                padding: 15px 25px;
+
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            }
+
+            .header nav.mobile-open {
+                display: flex;
+            }
+
+            .header nav a {
+                width: 100%;
+
+                padding: 14px 10px;
+
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .menu-toggle {
+                display: block;
+
+                margin-left: auto;
+                margin-right: 15px;
+            }
+
+            .contact-btn {
+                padding: 10px 15px;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat {
+                margin-bottom: 25px;
+            }
+
+            .record-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-image {
+                min-height: 400px;
+            }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .header {
+                min-height: 70px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo span {
+                font-size: 12px;
+            }
+
+            .header nav {
+                top: 70px;
+            }
+
+            .contact-btn {
+                padding: 9px 11px;
+
+                font-size: 11px;
+            }
+
+            .menu-toggle {
+                width: 38px;
+                height: 38px;
+
+                font-size: 19px;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero-content {
+                padding: 130px 25px 60px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .hero-text {
+                font-size: 15px;
+            }
+
+            .intro {
+                padding: 70px 0;
+            }
+
+            .intro .section-container {
+                grid-template-columns: 1fr;
+
+                gap: 15px;
+            }
+
+            .intro-heading h2,
+            .section-title h2,
+            .feature-content h2 {
+                font-size: 43px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+
+                padding: 45px 15px;
+            }
+
+            .stat {
+                border-right: none;
+
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+                padding: 20px 5px;
+            }
+
+            .number {
+                font-size: 38px;
+            }
+
+            .label {
+                font-size: 10px;
+            }
+
+            .records {
+                padding: 70px 0;
+            }
+
+            .record-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .record-card {
+                min-height: auto;
+            }
+
+            .feature-content {
+                padding: 70px 30px;
+            }
+
+            .newsletter-content {
+                flex-direction: column;
+
+                gap: 20px;
+
+                text-align: center;
+            }
+
+            .newsletter h2 {
+                font-size: 22px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+
+                gap: 15px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            ALPINE<br>
+            <span>ASCENTS</span>
+        </div>
+
+        <nav>
+
+            <a href="#">CLIMBS</a>
+
+            <a href="#">TREKS</a>
+
+            <a href="#">COURSES</a>
+
+            <a href="#">GUIDES</a>
+
+            <a href="#" class="active">RECORDS</a>
+
+            <a href="#">ABOUT</a>
+
+        </nav>
+
+        <a href="#" class="contact-btn">
+            CONTACT US
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                ALPINE ASCENTS INTERNATIONAL
+            </p>
+
+            <h1>
+                RECORDS &<br>
+                ACHIEVEMENTS
+            </h1>
+
+            <p class="hero-text">
+                Decades of experience, historic ascents and a tradition
+                of excellence in high-altitude mountaineering.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="intro">
+
+        <div class="section-container">
+
+            <div class="intro-heading">
+
+                <span>OUR EXPERIENCE</span>
+
+                <h2>
+                    BUILT ON<br>
+                    EXPERIENCE
+                </h2>
+
+            </div>
+
+
+            <div class="intro-text">
+
+                <p>
+                    Since 1986, Alpine Ascents has guided climbers on many
+                    of the world's highest and most challenging mountains.
+                    Our history includes significant summit achievements,
+                    speed records and pioneering ascents.
+                </p>
+
+                <p>
+                    From Everest and the Seven Summits to major peaks in
+                    Alaska, the Himalaya and the Cascades, our guides bring
+                    extensive expedition experience to every climb.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RECORD NUMBERS ================= -->
+
+    <section class="stats">
+
+        <div class="stats-container">
+
+            <div class="stat">
+
+                <span class="number">
+                    357+
+                </span>
+
+                <span class="label">
+                    EVEREST SUMMITS
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span class="number">
+                    40+
+                </span>
+
+                <span class="label">
+                    YEARS OF EXPERIENCE
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span class="number">
+                    7
+                </span>
+
+                <span class="label">
+                    CONTINENTAL HIGH POINTS
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span class="number">
+                    8000M
+                </span>
+
+                <span class="label">
+                    HIGH-ALTITUDE EXPEDITIONS
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RECORDS ================= -->
+
+    <section class="records">
+
+        <div class="section-container">
+
+            <div class="section-title">
+
+                <span>NOTABLE ACHIEVEMENTS</span>
+
+                <h2>
+                    RECORDS FROM<br>
+                    THE MOUNTAINS
+                </h2>
+
+            </div>
+
+
+            <div class="record-grid">
+
+
+                <!-- Record 1 -->
+
+                <article class="record-card">
+
+                    <div class="record-number">
+                        01
+                    </div>
+
+                    <h3>
+                        EVEREST
+                    </h3>
+
+                    <p class="record-date">
+                        2011
+                    </p>
+
+                    <p>
+                        Three members of the Alpine Ascents expedition
+                        reached the summit of Everest and then continued
+                        to Lhotse, becoming the first people ever to stand
+                        on the summit of two 8,000-meter peaks within a
+                        24-hour period.
+                    </p>
+
+                    <a href="#">
+                        READ MORE →
+                    </a>
+
+                </article>
+
+
+                <!-- Record 2 -->
+
+                <article class="record-card">
+
+                    <div class="record-number">
+                        02
+                    </div>
+
+                    <h3>
+                        EVEREST
+                    </h3>
+
+                    <p class="record-date">
+                        2008
+                    </p>
+
+                    <p>
+                        Alpine Ascents recorded 24 team members reaching
+                        the summit of Everest during its 2008 expedition,
+                        one of the company's notable Everest seasons.
+                    </p>
+
+                    <a href="#">
+                        READ MORE →
+                    </a>
+
+                </article>
+
+
+                <!-- Record 3 -->
+
+                <article class="record-card">
+
+                    <div class="record-number">
+                        03
+                    </div>
+
+                    <h3>
+                        RAINIER
+                    </h3>
+
+                    <p class="record-date">
+                        SPEED RECORD
+                    </p>
+
+                    <p>
+                        Senior guide Craig Van Hoy's significant ascents
+                        include Rainier speed records and hundreds of
+                        Rainier summits across multiple routes.
+                    </p>
+
+                    <a href="#">
+                        READ MORE →
+                    </a>
+
+                </article>
+
+
+                <!-- Record 4 -->
+
+                <article class="record-card">
+
+                    <div class="record-number">
+                        04
+                    </div>
+
+                    <h3>
+                        SEVEN SUMMITS
+                    </h3>
+
+                    <p class="record-date">
+                        LONG-TERM ACHIEVEMENT
+                    </p>
+
+                    <p>
+                        Alpine Ascents has guided climbers on the highest
+                        mountain on each continent and has been involved
+                        with the Seven Summits since the company's early
+                        years.
+                    </p>
+
+                    <a href="#">
+                        READ MORE →
+                    </a>
+
+                </article>
+
+
+                <!-- Record 5 -->
+
+                <article class="record-card">
+
+                    <div class="record-number">
+                        05
+                    </div>
+
+                    <h3>
+                        DENALI
+                    </h3>
+
+                    <p class="record-date">
+                        SIGNIFICANT ASCENTS
+                    </p>
+
+                    <p>
+                        Alpine Ascents' guides have extensive Denali
+                        experience, including numerous guided summits
+                        and notable individual climbing achievements.
+                    </p>
+
+                    <a href="#">
+                        READ MORE →
+                    </a>
+
+                </article>
+
+
+                <!-- Record 6 -->
+
+                <article class="record-card">
+
+                    <div class="record-number">
+                        06
+                    </div>
+
+                    <h3>
+                        HIMALAYA
+                    </h3>
+
+                    <p class="record-date">
+                        8000M PEAKS
+                    </p>
+
+                    <p>
+                        The company has led expeditions on Everest,
+                        Lhotse, Cho Oyu, Manaslu, Shishapangma and
+                        other major Himalayan peaks.
+                    </p>
+
+                    <a href="#">
+                        READ MORE →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURE ================= -->
+
+    <section class="feature">
+
+        <div class="feature-image"></div>
+
+
+        <div class="feature-content">
+
+            <span>
+                GUIDE ACHIEVEMENTS
+            </span>
+
+            <h2>
+                EXPERIENCE<br>
+                THAT MATTERS
+            </h2>
+
+            <p>
+                Our guide staff includes climbers with extensive
+                experience on the world's highest mountains. Their
+                individual achievements form an important part of
+                Alpine Ascents' expedition heritage.
+            </p>
+
+            <a href="#" class="orange-btn">
+                MEET OUR GUIDES
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="newsletter">
+
+        <div class="newsletter-content">
+
+            <h2>
+                SIGN UP FOR OUR NEWSLETTER
+            </h2>
+
+            <button>
+                SIGN UP
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ALPINE ASCENTS
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#">CLIMBS</a>
+
+            <a href="#">TREKS</a>
+
+            <a href="#">COURSES</a>
+
+            <a href="#">GUIDES</a>
+
+            <a href="#">CONTACT</a>
+
+        </div>
+
+        <p>
+            © 2026 Alpine Ascents International
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            /* =========================================
+               HEADER SCROLL EFFECT
+            ========================================= */
+
+            const header =
+                document.querySelector(".header");
+
+            window.addEventListener("scroll", function () {
+
+                if (window.scrollY > 50) {
+
+                    header.classList.add("scrolled");
+
+                } else {
+
+                    header.classList.remove("scrolled");
+
+                }
+
+            });
+
+
+            /* =========================================
+               RECORD CARD READ MORE
+            ========================================= */
+
+            const recordCards =
+                document.querySelectorAll(".record-card");
+
+
+            recordCards.forEach(function (card) {
+
+                const button =
+                    card.querySelector("a");
+
+                if (!button) return;
+
+
+                button.addEventListener("click", function (e) {
+
+                    e.preventDefault();
+
+
+                    const existingMessage =
+                        card.querySelector(".record-message");
+
+
+                    if (existingMessage) {
+
+                        existingMessage.remove();
+
+                        button.textContent =
+                            "READ MORE →";
+
+                        return;
+
+                    }
+
+
+                    const message =
+                        document.createElement("div");
+
+
+                    message.className =
+                        "record-message";
+
+
+                    message.innerHTML = `
+                        <p>
+                            This achievement is part of the
+                            Alpine Ascents climbing history and
+                            reflects the experience of its guides
+                            and expedition teams.
+                        </p>
+                    `;
+
+
+                    card.appendChild(message);
+
+
+                    button.textContent =
+                        "SHOW LESS ↑";
+
+                });
+
+            });
+
+
+            /* =========================================
+               STATS COUNTER ANIMATION
+            ========================================= */
+
+            const stats =
+                document.querySelectorAll(".number");
+
+            let statsStarted = false;
+
+
+            function animateStats() {
+
+                if (statsStarted) return;
+
+
+                const statsSection =
+                    document.querySelector(".stats");
+
+
+                if (!statsSection) return;
+
+
+                const sectionTop =
+                    statsSection.getBoundingClientRect().top;
+
+
+                const windowHeight =
+                    window.innerHeight;
+
+
+                if (sectionTop < windowHeight - 100) {
+
+                    statsStarted = true;
+
+
+                    stats.forEach(function (stat) {
+
+                        const text =
+                            stat.textContent.trim();
+
+
+                        const number =
+                            parseInt(
+                                text.replace(/\D/g, ""),
+                                10
+                            );
+
+
+                        if (isNaN(number)) return;
+
+
+                        const suffix =
+                            text.replace(/[0-9]/g, "");
+
+
+                        let current = 0;
+
+                        const duration = 1800;
+
+                        const startTime =
+                            performance.now();
+
+
+                        function updateCounter(currentTime) {
+
+                            const progress =
+                                Math.min(
+                                    (currentTime - startTime)
+                                    / duration,
+                                    1
+                                );
+
+
+                            current =
+                                Math.floor(
+                                    progress * number
+                                );
+
+
+                            stat.textContent =
+                                current + suffix;
+
+
+                            if (progress < 1) {
+
+                                requestAnimationFrame(
+                                    updateCounter
+                                );
+
+                            } else {
+
+                                stat.textContent =
+                                    number + suffix;
+
+                            }
+
+                        }
+
+
+                        requestAnimationFrame(
+                            updateCounter
+                        );
+
+                    });
+
+                }
+
+            }
+
+
+            window.addEventListener(
+                "scroll",
+                animateStats
+            );
+
+            animateStats();
+
+
+            /* =========================================
+               SCROLL REVEAL
+            ========================================= */
+
+            const revealElements =
+                document.querySelectorAll(
+                    ".record-card, .intro-heading, .intro-text, .section-title, .feature-content"
+                );
+
+
+            revealElements.forEach(function (element) {
+
+                element.classList.add("reveal");
+
+            });
+
+
+            function revealOnScroll() {
+
+                revealElements.forEach(function (element) {
+
+                    const elementTop =
+                        element.getBoundingClientRect().top;
+
+
+                    const windowHeight =
+                        window.innerHeight;
+
+
+                    if (elementTop < windowHeight - 80) {
+
+                        element.classList.add("show");
+
+                    }
+
+                });
+
+            }
+
+
+            window.addEventListener(
+                "scroll",
+                revealOnScroll
+            );
+
+            revealOnScroll();
+
+
+            /* =========================================
+               NEWSLETTER BUTTON
+            ========================================= */
+
+            const newsletterButton =
+                document.querySelector(
+                    ".newsletter button"
+                );
+
+
+            if (newsletterButton) {
+
+                newsletterButton.addEventListener(
+                    "click",
+                    function () {
+
+                        const email =
+                            prompt(
+                                "Please enter your email address:"
+                            );
+
+
+                        if (!email) {
+                            return;
+                        }
+
+
+                        if (!validateEmail(email)) {
+
+                            alert(
+                                "Please enter a valid email address."
+                            );
+
+                            return;
+
+                        }
+
+
+                        alert(
+                            "Thank you! You have been added to our newsletter."
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =========================================
+               EMAIL VALIDATION
+            ========================================= */
+
+            function validateEmail(email) {
+
+                const pattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                return pattern.test(email);
+
+            }
+
+
+            /* =========================================
+               BUTTON HOVER EFFECT
+            ========================================= */
+
+            const buttons =
+                document.querySelectorAll(
+                    ".orange-btn, .contact-btn, .newsletter button"
+                );
+
+
+            buttons.forEach(function (button) {
+
+                button.addEventListener(
+                    "mouseenter",
+                    function () {
+
+                        this.style.transform =
+                            "translateY(-2px)";
+
+                    }
+                );
+
+
+                button.addEventListener(
+                    "mouseleave",
+                    function () {
+
+                        this.style.transform =
+                            "translateY(0)";
+
+                    }
+                );
+
+            });
+
+
+            /* =========================================
+               ACTIVE NAVIGATION
+            ========================================= */
+
+            const currentPage =
+                window.location.pathname
+                    .split("/")
+                    .pop();
+
+
+            const navigationLinks =
+                document.querySelectorAll(
+                    ".header nav a"
+                );
+
+
+            navigationLinks.forEach(function (link) {
+
+                const linkPage =
+                    link.getAttribute("href");
+
+
+                if (
+                    linkPage &&
+                    linkPage !== "#" &&
+                    linkPage === currentPage
+                ) {
+
+                    navigationLinks.forEach(
+                        function (item) {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    link.classList.add("active");
+
+                }
+
+            });
+
+
+            /* =========================================
+               MOBILE MENU
+            ========================================= */
+
+            const nav =
+                document.querySelector(
+                    ".header nav"
+                );
+
+
+            const menuButton =
+                document.createElement("button");
+
+
+            menuButton.className =
+                "menu-toggle";
+
+
+            menuButton.innerHTML = "☰";
+
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
+
+
+            const headerElement =
+                document.querySelector(
+                    ".header"
+                );
+
+
+            if (headerElement && nav) {
+
+                headerElement.insertBefore(
+                    menuButton,
+                    nav
+                );
+
+
+                menuButton.addEventListener(
+                    "click",
+                    function () {
+
+                        nav.classList.toggle(
+                            "mobile-open"
+                        );
+
+
+                        if (
+                            nav.classList.contains(
+                                "mobile-open"
+                            )
+                        ) {
+
+                            menuButton.innerHTML =
+                                "✕";
+
+                        } else {
+
+                            menuButton.innerHTML =
+                                "☰";
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =========================================
+               CLOSE MOBILE MENU
+            ========================================= */
+
+            const navLinks =
+                document.querySelectorAll(
+                    ".header nav a"
+                );
+
+
+            navLinks.forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        nav.classList.remove(
+                            "mobile-open"
+                        );
+
+
+                        menuButton.innerHTML =
+                            "☰";
+
+                    }
+                );
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2036 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Alpine Ascents — Gallery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =====================================
+       RESET
+    ===================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --forest: #14221b;
+      --forest-2: #1d3026;
+      --gold: #b9965b;
+      --gold-light: #d8bb86;
+
+      --cream: #f5f3ed;
+      --white: #ffffff;
+      --text: #202721;
+      --muted: #737872;
+
+      --border: rgba(20, 34, 27, .13);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    /* =====================================
+       GALLERY SECTION
+    ===================================== */
+
+    .gallery-section {
+      position: relative;
+      min-height: 100vh;
+
+      padding: 110px 30px 130px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 5% 5%,
+          rgba(185,150,91,.12),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 95% 90%,
+          rgba(20,34,27,.10),
+          transparent 28%
+        ),
+        var(--cream);
+    }
+
+    .gallery-section::before {
+      content: "";
+
+      position: absolute;
+
+      width: 400px;
+      height: 400px;
+
+      border: 1px solid rgba(185,150,91,.12);
+
+      border-radius: 50%;
+
+      top: -200px;
+      right: -150px;
+    }
+
+    .gallery-container {
+      position: relative;
+      z-index: 1;
+
+      width: min(1450px, 100%);
+
+      margin: auto;
+    }
+
+    /* =====================================
+       HEADER
+    ===================================== */
+
+    .gallery-header {
+      max-width: 760px;
+
+      margin: 0 auto 55px;
+
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      color: var(--gold);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+    }
+
+    .eyebrow-line {
+      width: 32px;
+      height: 1px;
+
+      background: var(--gold);
+    }
+
+    .gallery-header h1 {
+      margin-top: 20px;
+
+      color: var(--forest);
+
+      font-family: "Playfair Display", Georgia, serif;
+
+      font-size: clamp(48px, 6vw, 78px);
+
+      line-height: 1;
+
+      font-weight: 500;
+    }
+
+    .gallery-header h1 span {
+      display: block;
+
+      color: var(--gold);
+
+      font-style: italic;
+    }
+
+    .gallery-header p {
+      max-width: 620px;
+
+      margin: 25px auto 0;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+    /* =====================================
+       FILTERS
+    ===================================== */
+
+    .gallery-filters {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-bottom: 45px;
+    }
+
+    .filter-btn {
+      padding: 11px 20px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 100px;
+
+      background: rgba(255,255,255,.4);
+
+      color: #626862;
+
+      font-family: inherit;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-2px);
+
+      border-color: var(--gold);
+
+      color: var(--forest);
+    }
+
+    .filter-btn.active {
+      background: var(--forest);
+
+      border-color: var(--forest);
+
+      color: white;
+
+      box-shadow:
+        0 8px 25px rgba(20,34,27,.15);
+    }
+
+    /* =====================================
+       GALLERY GRID
+       ALL IMAGES SAME SIZE
+    ===================================== */
+
+    .gallery-grid {
+      display: grid;
+
+      /*
+        3 equal columns
+        All cards have exactly the same size.
+      */
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      /*
+        Larger image/card height
+      */
+      grid-auto-rows: 390px;
+
+      gap: 18px;
+    }
+
+    /* =====================================
+       GALLERY CARD
+    ===================================== */
+
+    .gallery-item {
+      position: relative;
+
+      width: 100%;
+      height: 390px;
+
+      overflow: hidden;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      background: #ddd;
+
+      box-shadow:
+        0 8px 30px rgba(20,34,27,.08);
+
+      animation:
+        galleryIn .6s ease both;
+    }
+
+    /*
+      IMPORTANT:
+      Purane .large sizes remove kar diye gaye hain.
+      Ab har image exactly same size hogi.
+    */
+
+    .gallery-item.large {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    /* =====================================
+       IMAGE
+    ===================================== */
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      /*
+        Sab images same box ko completely fill karengi.
+      */
+      object-fit: cover;
+
+      /*
+        Center crop
+      */
+      object-position: center;
+
+      transition:
+        transform .8s cubic-bezier(.2,.7,.2,1),
+        filter .5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+
+      filter:
+        brightness(.82)
+        saturate(1.1);
+    }
+
+    /* =====================================
+       OVERLAY
+    ===================================== */
+
+    .image-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      padding: 28px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 20%,
+          rgba(10,18,13,.15) 45%,
+          rgba(8,15,11,.94) 100%
+        );
+
+      opacity: 0;
+
+      transition: .4s ease;
+    }
+
+    .gallery-item:hover .image-overlay {
+      opacity: 1;
+    }
+
+    .image-overlay span {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2.5px;
+
+      text-transform: uppercase;
+    }
+
+    .image-overlay h2 {
+      max-width: 350px;
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size: 27px;
+
+      font-weight: 500;
+
+      line-height: 1.15;
+    }
+
+    .image-overlay p {
+      margin-top: 8px;
+
+      color: rgba(255,255,255,.65);
+
+      font-size: 12px;
+    }
+
+    /* =====================================
+       VIEW BUTTON
+    ===================================== */
+
+    .view-btn {
+      flex-shrink: 0;
+
+      width: 52px;
+      height: 52px;
+
+      border: 1px solid rgba(255,255,255,.35);
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.12);
+
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      backdrop-filter: blur(10px);
+
+      transition: .35s ease;
+    }
+
+    .view-btn:hover {
+      background: var(--gold);
+
+      transform: rotate(45deg);
+    }
+
+    /* =====================================
+       EMPTY STATE
+    ===================================== */
+
+    .empty-state {
+      display: none;
+
+      padding: 100px 20px;
+
+      text-align: center;
+    }
+
+    .empty-state.show {
+      display: block;
+    }
+
+    .empty-state span {
+      color: var(--gold);
+
+      font-size: 40px;
+    }
+
+    .empty-state h3 {
+      margin-top: 12px;
+
+      color: var(--forest);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 28px;
+    }
+
+    .empty-state p {
+      margin-top: 7px;
+
+      color: var(--muted);
+    }
+
+    /* =====================================
+       LIGHTBOX
+    ===================================== */
+
+    .lightbox {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 99999;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      padding: 40px;
+
+      background: rgba(5,10,7,.97);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transition:
+        opacity .35s ease,
+        visibility .35s ease;
+    }
+
+    .lightbox.show {
+      opacity: 1;
+
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      width: min(1200px, 88vw);
+
+      transform: scale(.92);
+
+      transition:
+        transform .4s ease;
+    }
+
+    .lightbox.show .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-content img {
+      width: 100%;
+
+      max-height: 75vh;
+
+      display: block;
+
+      object-fit: contain;
+
+      border-radius: 6px;
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.5);
+    }
+
+    /* =====================================
+       LIGHTBOX INFO
+    ===================================== */
+
+    .lightbox-info {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+
+      padding-top: 18px;
+
+      color: white;
+    }
+
+    .lightbox-info span:first-child {
+      color: var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .lightbox-info h3 {
+      margin-top: 5px;
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size: 27px;
+
+      font-weight: 500;
+    }
+
+    .lightbox-info p {
+      margin-top: 3px;
+
+      color: rgba(255,255,255,.5);
+
+      font-size: 12px;
+    }
+
+    .image-counter {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      color: white;
+
+      font-size: 13px;
+    }
+
+    .image-counter i {
+      color: rgba(255,255,255,.3);
+
+      font-style: normal;
+    }
+
+    /* =====================================
+       CLOSE BUTTON
+    ===================================== */
+
+    .lightbox-close {
+      position: absolute;
+
+      top: 25px;
+
+      right: 30px;
+
+      width: 48px;
+
+      height: 48px;
+
+      display: grid;
+
+      place-items: center;
+
+      border: 1px solid rgba(255,255,255,.18);
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.07);
+
+      color: white;
+
+      font-size: 29px;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .lightbox-close:hover {
+      background: var(--gold);
+
+      transform: rotate(90deg);
+    }
+
+    /* =====================================
+       PREVIOUS / NEXT
+    ===================================== */
+
+    .lightbox-nav {
+      position: absolute;
+
+      top: 50%;
+
+      width: 56px;
+
+      height: 56px;
+
+      display: grid;
+
+      place-items: center;
+
+      transform: translateY(-50%);
+
+      border: 1px solid rgba(255,255,255,.18);
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.07);
+
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--gold);
+    }
+
+    .lightbox-nav.prev {
+      left: 30px;
+    }
+
+    .lightbox-nav.next {
+      right: 30px;
+    }
+
+    /* =====================================
+       ANIMATION
+    ===================================== */
+
+    @keyframes galleryIn {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+    /* =====================================
+       LARGE TABLET
+    ===================================== */
+
+    @media (max-width: 1100px) {
+
+      .gallery-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        grid-auto-rows: 380px;
+      }
+
+      .gallery-item {
+        height: 380px;
+      }
+
+    }
+
+    /* =====================================
+       TABLET
+    ===================================== */
+
+    @media (max-width: 800px) {
+
+      .gallery-section {
+        padding: 90px 20px 110px;
+      }
+
+      .gallery-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        grid-auto-rows: 340px;
+
+        gap: 14px;
+      }
+
+      .gallery-item {
+        height: 340px;
+      }
+
+    }
+
+    /* =====================================
+       MOBILE
+    ===================================== */
+
+    @media (max-width: 650px) {
+
+      .gallery-section {
+        padding: 75px 15px 90px;
+      }
+
+      .gallery-header {
+        margin-bottom: 40px;
+      }
+
+      .gallery-header h1 {
+        font-size: 45px;
+      }
+
+      .gallery-header p {
+        font-size: 14px;
+      }
+
+      .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+      }
+
+      .eyebrow-line {
+        width: 18px;
+      }
+
+      /* Filter */
+
+      .gallery-filters {
+        gap: 6px;
+
+        margin-bottom: 28px;
+      }
+
+      .filter-btn {
+        padding: 9px 14px;
+
+        font-size: 11px;
+      }
+
+      /* One column */
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+
+        grid-auto-rows: 330px;
+
+        gap: 12px;
+      }
+
+      .gallery-item {
+        height: 330px;
+      }
+
+      /*
+        Mobile par overlay always visible
+      */
+
+      .image-overlay {
+        opacity: 1;
+
+        padding: 20px;
+      }
+
+      .image-overlay h2 {
+        font-size: 21px;
+      }
+
+      .view-btn {
+        width: 44px;
+
+        height: 44px;
+      }
+
+      /* Lightbox */
+
+      .lightbox {
+        padding: 20px;
+      }
+
+      .lightbox-content {
+        width: 100%;
+      }
+
+      .lightbox-content img {
+        max-height: 65vh;
+      }
+
+      .lightbox-info h3 {
+        font-size: 21px;
+      }
+
+      .lightbox-close {
+        top: 14px;
+
+        right: 14px;
+
+        width: 42px;
+
+        height: 42px;
+      }
+
+      /* Mobile navigation */
+
+      .lightbox-nav {
+        top: auto;
+
+        bottom: 25px;
+
+        width: 43px;
+
+        height: 43px;
+
+        transform: none;
+      }
+
+      .lightbox-nav.prev {
+        left: 22px;
+      }
+
+      .lightbox-nav.next {
+        right: 22px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================
+       GALLERY
+  ====================================== -->
+
+  <main class="gallery-section">
+
+    <div class="gallery-container">
+
+      <!-- HEADER -->
+
+      <header class="gallery-header">
+
+        <span class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          EXPLORE THE ADVENTURE
+
+          <span class="eyebrow-line"></span>
+
+        </span>
+
+        <h1>
+
+          Moments From
+
+          <span>The Wild</span>
+
+        </h1>
+
+        <p>
+
+          Discover unforgettable moments from our expeditions,
+          mountain climbs, and adventures across the world's most
+          breathtaking landscapes.
+
+        </p>
+
+      </header>
+
+      <!-- FILTERS -->
+
+      <nav class="gallery-filters">
+
+        <button
+          class="filter-btn active"
+          data-filter="all"
+        >
+          All
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="mountains"
+        >
+          Mountains
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="expeditions"
+        >
+          Expeditions
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="trekking"
+        >
+          Trekking
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="team"
+        >
+          Our Team
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="nature"
+        >
+          Nature
+        </button>
+
+      </nav>
+
+      <!-- =====================================
+           GALLERY
+           ALL IMAGES SAME SIZE
+      ====================================== -->
+
+      <div
+        class="gallery-grid"
+        id="galleryGrid"
+      >
+
+        <!-- 01 -->
+
+        <article
+          class="gallery-item"
+          data-category="mountains"
+          data-title="Into The Wild"
+          data-location="Alpine Mountains"
+        >
+
+          <img
+            src="/imgg/images 1 main.jpg"
+            alt="Mountain expedition"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Mountains</span>
+
+              <h2>Into The Wild</h2>
+
+              <p>Alpine Mountains</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 02 -->
+
+        <article
+          class="gallery-item"
+          data-category="expeditions"
+          data-title="High Altitude Adventure"
+          data-location="Himalayan Range"
+        >
+
+          <img
+            src="/imgg/mountain pic 2. jpg..jpg"
+            alt="High altitude mountain expedition"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Expedition</span>
+
+              <h2>High Altitude Adventure</h2>
+
+              <p>Himalayan Range</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 03 -->
+
+        <article
+          class="gallery-item"
+          data-category="trekking"
+          data-title="Mountain Trails"
+          data-location="Rocky Mountain Trail"
+        >
+
+          <img
+            src="/imgg/mountain pic 3. jpg..jpg"
+            alt="Mountain trekking trail"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Trekking</span>
+
+              <h2>Mountain Trails</h2>
+
+              <p>Rocky Mountain Trail</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 04 -->
+
+        <article
+          class="gallery-item"
+          data-category="mountains"
+          data-title="Above The Clouds"
+          data-location="Snow Peak"
+        >
+
+          <img
+            src="/imgg/mountain pic 4. jpg..jpg"
+            alt="Snowy mountain"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Mountains</span>
+
+              <h2>Above The Clouds</h2>
+
+              <p>Snow Peak</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 05 -->
+
+        <article
+          class="gallery-item"
+          data-category="team"
+          data-title="Adventure Together"
+          data-location="Base Camp"
+        >
+
+          <img
+            src="/imgg/mountain pic 5. jpg..jpg"
+            alt="Alpine team"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Our Team</span>
+
+              <h2>Adventure Together</h2>
+
+              <p>Base Camp</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 06 -->
+
+        <article
+          class="gallery-item"
+          data-category="expeditions"
+          data-title="The Summit"
+          data-location="Summit Camp"
+        >
+
+          <img
+            src="/imgg/mountain pic 6. jpg..jpg"
+            alt="Expedition team"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Expedition</span>
+
+              <h2>The Summit</h2>
+
+              <p>Summit Camp</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 07 -->
+
+        <article
+          class="gallery-item"
+          data-category="trekking"
+          data-title="Journey Through Nature"
+          data-location="Mountain Valley"
+        >
+
+          <img
+            src="/imgg/mountain pic 7. jpg..jpg"
+            alt="Trekking adventure"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Trekking</span>
+
+              <h2>Journey Through Nature</h2>
+
+              <p>Mountain Valley</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 08 -->
+
+        <article
+          class="gallery-item"
+          data-category="mountains"
+          data-title="Chasing Peaks"
+          data-location="Mountain Peak"
+        >
+
+          <img
+            src="/imgg/mountain pic 9. jpg..jpg"
+            alt="Mountain peak"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Mountains</span>
+
+              <h2>Chasing Peaks</h2>
+
+              <p>Mountain Peak</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 09 -->
+
+        <article
+          class="gallery-item"
+          data-category="nature"
+          data-title="The Tetons"
+          data-location="Grand Teton"
+        >
+
+          <img
+            src="/imgg/the tetons mountain.jpg"
+            alt="The Tetons"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Nature</span>
+
+              <h2>The Tetons</h2>
+
+              <p>Grand Teton</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 10 -->
+
+        <article
+          class="gallery-item"
+          data-category="nature"
+          data-title="Reflection Pond"
+          data-location="Mountain Lake"
+        >
+
+          <img
+            src="/imgg/reflection pond mountain.jpg"
+            alt="Reflection pond"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Nature</span>
+
+              <h2>Reflection Pond</h2>
+
+              <p>Mountain Lake</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 11 -->
+
+        <article
+          class="gallery-item"
+          data-category="expeditions"
+          data-title="Resurrection Bay"
+          data-location="Alaska"
+        >
+
+          <img
+            src="/imgg/resurrection bay mountain.jpg"
+            alt="Resurrection Bay"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Expedition</span>
+
+              <h2>Resurrection Bay</h2>
+
+              <p>Alaska</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 12 -->
+
+        <article
+          class="gallery-item"
+          data-category="nature"
+          data-title="Autumn At Bear Lake"
+          data-location="Bear Lake"
+        >
+
+          <img
+            src="/imgg/autumn at bear lake .jpg"
+            alt="Autumn mountain"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Nature</span>
+
+              <h2>Autumn At Bear Lake</h2>
+
+              <p>Bear Lake</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 13 -->
+
+        <article
+          class="gallery-item"
+          data-category="nature"
+          data-title="Bridge Mountain"
+          data-location="Red Rock Country"
+        >
+
+          <img
+            src="/imgg/bridge mountain red rock.jpg"
+            alt="Red rock mountain"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Nature</span>
+
+              <h2>Bridge Mountain</h2>
+
+              <p>Red Rock Country</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+
+        <!-- 14 -->
+
+        <article
+          class="gallery-item"
+          data-category="nature"
+          data-title="Taggart Lake"
+          data-location="Grand Teton"
+        >
+
+          <img
+            src="/imgg/Taggart-Lake mountain.jpg"
+            alt="Taggart Lake"
+            loading="lazy"
+          >
+
+          <div class="image-overlay">
+
+            <div>
+
+              <span>Nature</span>
+
+              <h2>Taggart Lake</h2>
+
+              <p>Grand Teton</p>
+
+            </div>
+
+            <button
+              class="view-btn"
+              aria-label="View image"
+            >
+              ↗
+            </button>
+
+          </div>
+
+        </article>
+                  
+
+       <!-- img 15 -->
+
+       <article
+  class="gallery-item"
+  data-category="mountains"
+  data-title="K2 Base Camp"
+  data-location="Karakoram, Pakistan"
+>
+
+  <img
+    src="/imgg/K2 Base Camp.jpg"
+    alt="K2 Base Camp Mountain"
+    loading="lazy"
+  >
+
+  <div class="image-overlay">
+
+    <div>
+
+      <span>Mountains</span>
+
+      <h2>K2 Base Camp</h2>
+
+      <p>Karakoram, Pakistan</p>
+
+    </div>
+
+    <button
+      class="view-btn"
+      aria-label="View K2 Base Camp image"
+    >
+      ↗
+    </button>
+
+  </div>
+
+</article>
+
+      </div>
+
+      <!-- EMPTY -->
+
+      <div
+        class="empty-state"
+        id="emptyState"
+      >
+
+        <span>◌</span>
+
+        <h3>No adventures found</h3>
+
+        <p>Try selecting another category.</p>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =====================================
+       LIGHTBOX
+  ====================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+  >
+
+    <button
+      class="lightbox-close"
+      id="closeBtn"
+      aria-label="Close"
+    >
+      &times;
+    </button>
+
+    <button
+      class="lightbox-nav prev"
+      id="prevBtn"
+      aria-label="Previous"
+    >
+      &#10094;
+    </button>
+
+    <div class="lightbox-content">
+
+      <img
+        id="lightboxImage"
+        src=""
+        alt="Gallery preview"
+      >
+
+      <div class="lightbox-info">
+
+        <div>
+
+          <span id="lightboxCategory"></span>
+
+          <h3 id="lightboxTitle"></h3>
+
+          <p id="lightboxLocation"></p>
+
+        </div>
+
+        <div class="image-counter">
+
+          <span id="currentImage">01</span>
+
+          <i>/</i>
+
+          <span id="totalImages">14</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <button
+      class="lightbox-nav next"
+      id="nextBtn"
+      aria-label="Next"
+    >
+      &#10095;
+    </button>
+
+  </div>
+
+  <!-- =====================================
+       JAVASCRIPT
+  ====================================== -->
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const galleryItems =
+        [...document.querySelectorAll(".gallery-item")];
+
+      const filterButtons =
+        [...document.querySelectorAll(".filter-btn")];
+
+      const lightbox =
+        document.getElementById("lightbox");
+
+      const lightboxImage =
+        document.getElementById("lightboxImage");
+
+      const lightboxTitle =
+        document.getElementById("lightboxTitle");
+
+      const lightboxCategory =
+        document.getElementById("lightboxCategory");
+
+      const lightboxLocation =
+        document.getElementById("lightboxLocation");
+
+      const currentImage =
+        document.getElementById("currentImage");
+
+      const totalImages =
+        document.getElementById("totalImages");
+
+      const closeBtn =
+        document.getElementById("closeBtn");
+
+      const prevBtn =
+        document.getElementById("prevBtn");
+
+      const nextBtn =
+        document.getElementById("nextBtn");
+
+      const emptyState =
+        document.getElementById("emptyState");
+
+      let visibleItems = [...galleryItems];
+
+      let currentIndex = 0;
+
+      /* =====================================
+         OPEN IMAGE
+      ===================================== */
+
+      galleryItems.forEach((item) => {
+
+        item.addEventListener("click", (event) => {
+
+          /*
+            View button ya card ke kisi bhi area par
+            click karne se lightbox open hoga.
+          */
+
+          visibleItems =
+            galleryItems.filter(
+              item => item.style.display !== "none"
+            );
+
+          currentIndex =
+            visibleItems.indexOf(item);
+
+          openLightbox();
+
+        });
+
+      });
+
+      /* =====================================
+         OPEN LIGHTBOX
+      ===================================== */
+
+      function openLightbox() {
+
+        const item =
+          visibleItems[currentIndex];
+
+        if (!item) return;
+
+        const image =
+          item.querySelector("img");
+
+        lightboxImage.src =
+          image.src;
+
+        lightboxImage.alt =
+          image.alt;
+
+        lightboxTitle.textContent =
+          item.dataset.title ||
+          "Mountain Adventure";
+
+        lightboxCategory.textContent =
+          item.dataset.category ||
+          "Adventure";
+
+        lightboxLocation.textContent =
+          item.dataset.location ||
+          "Alpine Mountains";
+
+        currentImage.textContent =
+          String(currentIndex + 1)
+            .padStart(2, "0");
+
+        totalImages.textContent =
+          String(visibleItems.length)
+            .padStart(2, "0");
+
+        lightbox.classList.add("show");
+
+        document.body.style.overflow =
+          "hidden";
+
+      }
+
+      /* =====================================
+         CLOSE
+      ===================================== */
+
+      function closeLightbox() {
+
+        lightbox.classList.remove("show");
+
+        document.body.style.overflow = "";
+
+      }
+
+      closeBtn.addEventListener(
+        "click",
+        closeLightbox
+      );
+
+      /* =====================================
+         NEXT
+      ===================================== */
+
+      function nextImage() {
+
+        if (!visibleItems.length) return;
+
+        currentIndex++;
+
+        if (
+          currentIndex >=
+          visibleItems.length
+        ) {
+
+          currentIndex = 0;
+
+        }
+
+        openLightbox();
+
+      }
+
+      nextBtn.addEventListener(
+        "click",
+        nextImage
+      );
+
+      /* =====================================
+         PREVIOUS
+      ===================================== */
+
+      function previousImage() {
+
+        if (!visibleItems.length) return;
+
+        currentIndex--;
+
+        if (currentIndex < 0) {
+
+          currentIndex =
+            visibleItems.length - 1;
+
+        }
+
+        openLightbox();
+
+      }
+
+      prevBtn.addEventListener(
+        "click",
+        previousImage
+      );
+
+      /* =====================================
+         CLICK OUTSIDE
+      ===================================== */
+
+      lightbox.addEventListener(
+        "click",
+        (event) => {
+
+          if (
+            event.target === lightbox
+          ) {
+
+            closeLightbox();
+
+          }
+
+        }
+      );
+
+      /* =====================================
+         KEYBOARD
+      ===================================== */
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            !lightbox.classList.contains("show")
+          ) {
+
+            return;
+
+          }
+
+          if (event.key === "Escape") {
+
+            closeLightbox();
+
+          }
+
+          if (event.key === "ArrowRight") {
+
+            nextImage();
+
+          }
+
+          if (event.key === "ArrowLeft") {
+
+            previousImage();
+
+          }
+
+        }
+      );
+
+      /* =====================================
+         FILTERS
+      ===================================== */
+
+      filterButtons.forEach((button) => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const filter =
+              button.dataset.filter;
+
+            filterButtons.forEach(
+              btn =>
+                btn.classList.remove("active")
+            );
+
+            button.classList.add("active");
+
+            visibleItems = [];
+
+            galleryItems.forEach((item) => {
+
+              const category =
+                item.dataset.category;
+
+              const show =
+                filter === "all" ||
+                category === filter;
+
+              if (show) {
+
+                item.style.display = "";
+
+                visibleItems.push(item);
+
+                /*
+                  Re-trigger animation
+                */
+
+                item.style.animation = "none";
+
+                item.offsetHeight;
+
+                item.style.animation =
+                  "galleryIn .6s ease both";
+
+              }
+
+              else {
+
+                item.style.display = "none";
+
+              }
+
+            });
+
+            if (!visibleItems.length) {
+
+              emptyState.classList.add("show");
+
+            }
+
+            else {
+
+              emptyState.classList.remove("show");
+
+            }
+
+          }
+        );
+
+      });
+
+      /* =====================================
+         MOBILE SWIPE
+      ===================================== */
+
+      let touchStartX = 0;
+
+      let touchEndX = 0;
+
+      lightbox.addEventListener(
+        "touchstart",
+        (event) => {
+
+          touchStartX =
+            event.changedTouches[0].screenX;
+
+        },
+        {
+          passive: true
+        }
+      );
+
+      lightbox.addEventListener(
+        "touchend",
+        (event) => {
+
+          touchEndX =
+            event.changedTouches[0].screenX;
+
+          const distance =
+            touchStartX - touchEndX;
+
+          if (distance > 50) {
+
+            nextImage();
+
+          }
+
+          if (distance < -50) {
+
+            previousImage();
+
+          }
+
+        },
+        {
+          passive: true
+        }
+      );
+
+    });
+
+  </script>
+
+</body>
+</html>
+
+
+

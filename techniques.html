@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mountaineering Academy</title>
+
+    <style>
+
+        /* =========================
+           ALPINE ASCENTS THEME
+        ========================= */
+
+        :root {
+            --dark-header: #363636;
+            --deep-navy: #071b2c;
+            --navy: #16394f;
+            --blue: #174364;
+            --orange: #ff5b0a;
+            --orange-light: #f4a623;
+            --light-bg: #eef2f4;
+            --white: #ffffff;
+            --text: #4b5963;
+            --border: #dce4e8;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            background: var(--light-bg);
+            color: var(--text);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.7;
+            padding: 60px 20px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+
+        header h1 {
+            color: var(--deep-navy);
+
+            font-size: 44px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 15px;
+        }
+
+
+        header h1::after {
+            content: "";
+
+            display: block;
+
+            width: 85px;
+
+            height: 5px;
+
+            background: var(--orange);
+
+            border-radius: 10px;
+
+            margin: 16px auto 0;
+
+            box-shadow:
+                0 4px 12px rgba(255, 91, 10, 0.25);
+        }
+
+
+        header p {
+            font-size: 17px;
+
+            color: var(--text);
+
+            max-width: 750px;
+
+            margin: 22px auto 0;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .ninja-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 28px;
+        }
+
+
+        /* =========================
+           ACADEMY CARD
+        ========================= */
+
+        .ninja-card {
+            position: relative;
+
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-top: 5px solid var(--orange);
+
+            border-radius: 15px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 10px 28px rgba(7, 27, 44, 0.10);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+
+            overflow: hidden;
+        }
+
+
+        /* TOP ACCENT */
+
+        .ninja-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--orange),
+                    var(--orange-light)
+                );
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
+        }
+
+
+        /* HOVER */
+
+        .ninja-card:hover {
+
+            transform: translateY(-8px);
+
+            border-top-color: var(--orange-light);
+
+            box-shadow:
+                0 18px 40px rgba(7, 27, 44, 0.17);
+        }
+
+
+        .ninja-card:hover::before {
+            opacity: 1;
+        }
+
+
+        /* =========================
+           BADGE
+        ========================= */
+
+        .card-badge {
+
+            display: inline-block;
+
+            background: #fff3ed;
+
+            border: 1px solid rgba(255, 91, 10, 0.35);
+
+            color: var(--orange);
+
+            padding: 6px 13px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            border-radius: 20px;
+
+            margin-bottom: 17px;
+
+            letter-spacing: 0.8px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           CARD TITLE
+        ========================= */
+
+        .card-title {
+
+            font-size: 22px;
+
+            color: var(--blue);
+
+            margin-bottom: 20px;
+
+            font-weight: 750;
+
+            line-height: 1.35;
+        }
+
+
+        /* =========================
+           TECHNIQUE BOX
+        ========================= */
+
+        .technique-box {
+
+            background: #f7f9fa;
+
+            border: 1px solid #e1e8ec;
+
+            border-left: 4px solid var(--orange);
+
+            padding: 16px;
+
+            border-radius: 8px;
+
+            margin-bottom: 22px;
+
+            color: var(--text);
+
+            font-size: 14.5px;
+
+            line-height: 1.7;
+        }
+
+
+        .technique-box strong {
+
+            color: var(--orange);
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            text-transform: uppercase;
+
+            font-size: 12px;
+
+            letter-spacing: 0.7px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+
+            color: var(--navy);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+
+            display: block;
+
+            letter-spacing: 0.8px;
+        }
+
+
+        /* =========================
+           TOOLS LIST
+        ========================= */
+
+        .tools-list {
+
+            list-style: none;
+
+            margin-bottom: 23px;
+        }
+
+
+        .tools-list li {
+
+            position: relative;
+
+            padding-left: 25px;
+
+            margin-bottom: 10px;
+
+            color: var(--text);
+
+            font-size: 14.5px;
+
+            line-height: 1.7;
+        }
+
+
+        .tools-list li::before {
+
+            content: "✓";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            color: var(--orange);
+
+            font-weight: 900;
+
+            font-size: 15px;
+        }
+
+
+        .tools-list strong {
+
+            color: var(--navy);
+        }
+
+
+        /* =========================
+           EXPERTISE BOX
+        ========================= */
+
+        .expertise-box {
+
+            background: var(--deep-navy);
+
+            border-left: 4px solid var(--orange-light);
+
+            padding: 14px 16px;
+
+            border-radius: 0 8px 8px 0;
+
+            font-size: 13.5px;
+
+            color: #e9eef2;
+
+            line-height: 1.7;
+        }
+
+
+        .expertise-box strong {
+
+            color: var(--orange-light);
+
+            text-transform: uppercase;
+
+            font-size: 11px;
+
+            display: block;
+
+            margin-bottom: 4px;
+
+            letter-spacing: 0.7px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            margin-top: 70px;
+
+            color: #6b7881;
+
+            font-size: 14px;
+
+            border-top: 1px solid var(--border);
+
+            padding-top: 25px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1024px) {
+
+            .ninja-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 38px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 40px 15px;
+            }
+
+
+            header {
+                margin-bottom: 40px;
+            }
+
+
+            header h1 {
+                font-size: 30px;
+
+                line-height: 1.25;
+            }
+
+
+            header p {
+                font-size: 15px;
+            }
+
+
+            .ninja-grid {
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+            }
+
+
+            .ninja-card {
+                padding: 22px;
+
+                border-radius: 13px;
+            }
+
+
+            .card-title {
+                font-size: 20px;
+            }
+        }
+
+
+        /* =========================
+           SMALL MOBILE
+        ========================= */
+
+        @media (max-width: 450px) {
+
+            body {
+                padding: 30px 12px;
+            }
+
+
+            header h1 {
+                font-size: 26px;
+            }
+
+
+            .ninja-card {
+                padding: 19px;
+            }
+
+
+            .card-badge {
+                font-size: 11px;
+
+                padding: 5px 10px;
+            }
+
+
+            .card-title {
+                font-size: 19px;
+            }
+
+
+            .technique-box,
+            .tools-list li {
+                font-size: 14px;
+            }
+
+
+            .expertise-box {
+                font-size: 13px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <h1>Ninja Mountaineering Squad</h1>
+
+            <p>
+                Mastering extreme terrain using high-level tactical movement,
+                precise tool mastery, and hidden survival rules.
+            </p>
+
+        </header>
+
+
+        <!-- GRID -->
+
+        <div class="ninja-grid">
+
+
+            <!-- CARD 1 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    1 DAY CLINIC
+                </div>
+
+                <div class="card-title">
+                    Crevasse Rescue Clinic
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: The Art of Extraction
+                    </strong>
+
+                    Utilizing rapid "Mechanical Advantage" rigging.
+                    Converting body weight into an unyielding anchor to haul
+                    heavy loads seamlessly out of icy voids.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Pulleys & Prusiks:</strong>
+                        Creates locked friction on ropes, instantly multiplying
+                        pulling power threefold.
+                    </li>
+
+                    <li>
+                        <strong>Snow Pickets:</strong>
+                        Hammered deep into the snowpack to construct an
+                        immovable main anchor point.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Flawless muscle memory to tie life-saving rescue knots
+                    under sub-zero panic scenarios.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    1 DAY COURSE
+                </div>
+
+                <div class="card-title">
+                    Mountaineering Fundamentals
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: The Self-Arrest Defense
+                    </strong>
+
+                    Mastering instantaneous deceleration. If footing fails
+                    on a steep headwall, instantly rolling to plant your
+                    center of mass and stop a fatal slide.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Ice Axe:</strong>
+                        Serves as a vital climbing extension and a primary
+                        emergency braking lever.
+                    </li>
+
+                    <li>
+                        <strong>Crampons:</strong>
+                        Steel footwear spikes designed to bite deeply into
+                        slick, high-angle hard pack ice.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Instinctively diagnosing snow texture changes through
+                    boots before loading weight.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    1 DAY CLINIC
+                </div>
+
+                <div class="card-title">
+                    Ski Crevasse Rescue Clinic
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: Backcountry Airtime Recovery
+                    </strong>
+
+                    Executing recovery mechanics while bound to ski equipment.
+                    Balancing wide surface weight profiles during active
+                    crevasse margin failure.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Ski Belay Systems:</strong>
+                        Adapting alpine touring skis directly into horizontal
+                        deadman anchors.
+                    </li>
+
+                    <li>
+                        <strong>Ascenders:</strong>
+                        Mechanical rope-clamping devices optimized for slick,
+                        frozen static lifelines.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Transitioning seamlessly from active ski-touring mode
+                    to high-angle rope extraction configurations.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    10 DAY EXPEDITION
+                </div>
+
+                <div class="card-title">
+                    10 Day Rainier Baker Mountaineering Course
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: Glaciated Rope Team Sync
+                    </strong>
+
+                    Synchronized group preservation. Team members move bound
+                    together by a dynamic line; if one falls, the rest deploy
+                    instant arresting drop weights.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Dynamic Harness & Ropes:</strong>
+                        Flexible woven lines built to absorb extreme impact
+                        forces safely.
+                    </li>
+
+                    <li>
+                        <strong>Altimeter & GPS Units:</strong>
+                        Secondary spatial awareness tracking systems deployed
+                        during blinding whiteouts.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Sustaining laser-like cognitive focus through 10 grueling
+                    days of extreme altitude and oxygen depletion.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 7 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    05 DAY EXPEDITION
+                </div>
+
+                <div class="card-title">
+                    5 Day Vertical Ice Intercept & Climbing
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: Frozen Pillar Anchor Placement
+                    </strong>
+
+                    Structural hazard bypass. Driving specialized, threaded
+                    ice screws at precise 15-degree angles into dense,
+                    blue water-ice to create bombproof load-bearing failure
+                    protection.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Aggressive Ergonomic Ice Tools:</strong>
+                        Hydro-formed shafts paired with laser-cut steel picks
+                        designed to bite securely into fragile vertical
+                        ice pillars.
+                    </li>
+
+                    <li>
+                        <strong>Dual-Point Crampons:</strong>
+                        Rigid steel boot-spikes engineered for precise
+                        front-pointing on vertical, overhang, and mixed
+                        terrain profiles.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Mastering balance dynamics and reading frozen waterfall
+                    integrity while enduring continuous exposure to freezing
+                    surface runoff.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 8 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    06 DAY EXPEDITION
+                </div>
+
+                <div class="card-title">
+                    6 Day High-Altitude Tactical Medicine Course
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: Hypothermia Wrap Isolation
+                    </strong>
+
+                    Critical thermal restoration. Deploying active internal
+                    heat packs combined with vapor-barrier insulation systems
+                    to reverse rapid core temperature collapse in sub-zero
+                    environments.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Portable Hyperbaric Chambers:</strong>
+                        Lightweight, inflatable pressure bags utilized to
+                        mechanically simulate lower altitudes and reverse
+                        acute mountain sickness.
+                    </li>
+
+                    <li>
+                        <strong>Tactical Trauma Kits:</strong>
+                        Specialized, cold-stabilized medical loadouts equipped
+                        with advanced splints, trauma dressings, and oxygen
+                        distribution lines.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Executing complex diagnostic and stabilization steps under
+                    extreme cognitive stress while handling patients in
+                    restricted alpine ledges.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 9 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    04 DAY EXPEDITION
+                </div>
+
+                <div class="card-title">
+                    4 Day Avalanche Interception & Snow Science
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: Snowpack Stability Profiling
+                    </strong>
+
+                    Sub-surface structural analysis. Conducting isolated
+                    compression tests on deep snow layers to identify hidden
+                    weak planes before they trigger catastrophic slope failure.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Digital Avalanche Beacons:</strong>
+                        High-frequency transceiver units utilized to broadcast
+                        and track location coordinates through meters of
+                        dense debris.
+                    </li>
+
+                    <li>
+                        <strong>Carbon Avalanche Probes:</strong>
+                        Rapid-assembly, segmented tension rods deployed to
+                        manually pinpoint buried objects beneath compressed
+                        snow fields.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Interpreting shifting meteorological history and terrain
+                    angles to predict snow slab mechanics before committing
+                    an entire team to a slope.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 10 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    07 DAY EXPEDITION
+                </div>
+
+                <div class="card-title">
+                    7 Day Alpine Speed-Flying Launch Course
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: High-Wind Inflation Launch
+                    </strong>
+
+                    Aerodynamic ground-launch execution. Controlling small,
+                    high-velocity wing cells under heavy alpine drafts to
+                    transition instantly from steep snow slopes to controlled
+                    flight.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>Micro-Profile Speed Wings:</strong>
+                        Low-volume, highly responsive canopies engineered for
+                        high-velocity descents close to steep mountain faces.
+                    </li>
+
+                    <li>
+                        <strong>Integrated Flight Harnesses:</strong>
+                        Ultra-lightweight, armored seat connections built to
+                        combine climbing mobility with seated flight stability.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Split-second spatial awareness and precise wind-shear
+                    calculations to safely pilot through narrow mountain
+                    couloirs and canyons.
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 11 -->
+
+            <div class="ninja-card">
+
+                <div class="card-badge">
+                    08 DAY EXPEDITION
+                </div>
+
+                <div class="card-title">
+                    8 Day Icefall Navigation & Tactical Route Finding
+                </div>
+
+                <div class="technique-box">
+
+                    <strong>
+                        🥷 Ninja Technique: Micro-Terrain Fracture Analysis
+                    </strong>
+
+                    Structural hazard prediction. Reading surface tension
+                    cracks and dynamic ice-flow patterns to plot safe
+                    movement vectors through active, shifting serac fields.
+
+                </div>
+
+                <span class="section-title">
+                    Tactical Gear & Use:
+                </span>
+
+                <ul class="tools-list">
+
+                    <li>
+                        <strong>High-Tensile Snow Pickets:</strong>
+                        Aircraft-grade aluminum t-anchors driven into deep
+                        firn layers for rapid top-line belay configurations.
+                    </li>
+
+                    <li>
+                        <strong>Sub-Surface Ground Radar:</strong>
+                        Compact, high-frequency scanning arrays deployed to
+                        identify hidden void boundaries beneath structural
+                        snow bridges.
+                    </li>
+
+                </ul>
+
+                <div class="expertise-box">
+
+                    <strong>Required Expertise:</strong>
+
+                    Maintaining flawless spatial orientation and team
+                    synchronization while navigating maze-like ice labyrinths
+                    under heavy low-visibility pressure.
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

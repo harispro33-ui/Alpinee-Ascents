@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mountain Trekking Blog</title>
+
+    <style>
+
+        /* =========================
+           BASIC
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef2f4;
+            color: #222;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           MAIN PAGE
+        ========================= */
+
+        .page {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           LEFT CONTENT
+        ========================= */
+
+        .content {
+            width: calc(100% - 340px);
+            padding: 45px;
+            min-width: 0;
+        }
+
+        .page-title {
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            margin: 0 0 10px;
+            font-size: 42px;
+            color: #071b2c;
+            font-weight: 700;
+        }
+
+        .page-title h1::after {
+            content: "";
+            display: block;
+            width: 65px;
+            height: 4px;
+            background: #ff5b0a;
+            margin-top: 15px;
+            border-radius: 3px;
+        }
+
+        .page-title p {
+            margin: 15px 0 0;
+            color: #666;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           BLOG CARDS
+        ========================= */
+
+        .blog-card {
+            background: #ffffff;
+            margin-bottom: 30px;
+            padding: 28px;
+
+            border-radius: 12px;
+
+            border: 1px solid #e1e6e9;
+
+            border-left: 5px solid #ff5b0a;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+
+            overflow: hidden;
+
+            transition: .3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-card h2 {
+            margin: 0 0 10px;
+            color: #16394f;
+            font-size: 27px;
+            line-height: 1.3;
+        }
+
+        .date {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .category {
+            display: inline-block;
+
+            background: #fff0e9;
+
+            color: #ff5b0a;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+
+            margin-bottom: 18px;
+
+            font-weight: 600;
+        }
+
+        .blog-image {
+            width: 200px;
+            height: 135px;
+
+            object-fit: cover;
+
+            border-radius: 9px;
+
+            float: left;
+
+            margin: 0 22px 15px 0;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .12);
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #444;
+            margin-top: 0;
+        }
+
+        .read-more {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 11px 20px;
+
+            background: #ff5b0a;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+
+            font-weight: 600;
+
+            transition: .3s;
+        }
+
+        .read-more:hover {
+            background: #071b2c;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+
+        /* =========================
+           RIGHT SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 340px;
+
+            min-height: 100vh;
+
+            background: #363636;
+
+            color: white;
+
+            padding: 30px 22px;
+
+            position: sticky;
+
+            top: 0;
+
+            align-self: flex-start;
+
+            overflow-y: auto;
+
+            max-height: 100vh;
+
+            box-shadow: -5px 0 20px rgba(0, 0, 0, .12);
+        }
+
+        .sidebar h2 {
+            margin: 0 0 25px;
+
+            font-size: 25px;
+
+            text-align: center;
+
+            color: white;
+
+            font-weight: 700;
+        }
+
+        .sidebar h2::after {
+            content: "";
+
+            display: block;
+
+            width: 50px;
+
+            height: 3px;
+
+            background: #ff5b0a;
+
+            margin: 12px auto 0;
+
+            border-radius: 3px;
+        }
+
+        .sidebar img {
+            display: block;
+
+            width: 100%;
+
+            height: 170px;
+
+            object-fit: cover;
+
+            border-radius: 9px;
+
+            margin-bottom: 25px;
+
+            border: 2px solid rgba(255, 91, 10, .5);
+        }
+
+        .sidebar-section {
+            margin-bottom: 28px;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid rgba(255,255,255,.12);
+        }
+
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-section h3 {
+            font-size: 14px;
+
+            color: #ff5b0a;
+
+            margin: 0 0 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .sidebar a {
+            display: block;
+
+            color: #f2f2f2;
+
+            text-decoration: none;
+
+            padding: 9px 10px;
+
+            margin: 4px 0;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            transition: .3s;
+        }
+
+        .sidebar a:hover {
+            background: #071b2c;
+
+            color: white;
+
+            padding-left: 15px;
+        }
+
+
+        /* =========================
+           RESOURCE BOXES
+        ========================= */
+
+        .resource-box {
+            background: white;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            border-radius: 12px;
+
+            border-left: 5px solid #ff5b0a;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .resource-box h2 {
+            color: #071b2c;
+
+            margin: 0 0 20px;
+
+            font-size: 27px;
+
+            border-bottom: 2px solid #edf0f2;
+
+            padding-bottom: 12px;
+        }
+
+        .resource-box a {
+            color: #ff5b0a;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .resource-box a:hover {
+            color: #071b2c;
+
+            text-decoration: underline;
+        }
+
+        .resource-list {
+            padding-left: 20px;
+
+            margin: 0;
+        }
+
+        .resource-list li {
+            margin-bottom: 13px;
+
+            line-height: 1.6;
+        }
+
+        .cybercast-text {
+            line-height: 1.8;
+
+            color: #444;
+        }
+
+        .recent-link {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 12px 20px;
+
+            background: #ff5b0a;
+
+            color: white !important;
+
+            border-radius: 5px;
+
+            text-decoration: none !important;
+
+            transition: .3s;
+        }
+
+        .recent-link:hover {
+            background: #071b2c;
+        }
+
+
+        /* =========================
+           TAGS
+        ========================= */
+
+        .tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 8px 13px;
+
+            background: #eef2f4;
+
+            color: #16394f !important;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+
+            text-decoration: none !important;
+
+            font-weight: normal !important;
+
+            border: 1px solid #dce3e7;
+
+            transition: .3s;
+        }
+
+        .tag:hover {
+            background: #ff5b0a;
+
+            color: white !important;
+
+            border-color: #ff5b0a;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .page {
+                display: flex;
+
+                flex-direction: column;
+            }
+
+            .content {
+                width: 100%;
+
+                padding: 30px 20px;
+
+                order: 1;
+            }
+
+            .sidebar {
+                width: 100%;
+
+                min-height: auto;
+
+                max-height: none;
+
+                position: relative;
+
+                order: 2;
+            }
+
+            .page-title h1 {
+                font-size: 34px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .content {
+                padding: 25px 15px;
+            }
+
+            .page-title h1 {
+                font-size: 30px;
+            }
+
+            .blog-card {
+                padding: 20px;
+            }
+
+            .blog-card h2 {
+                font-size: 23px;
+            }
+
+            .blog-image {
+                width: 100%;
+
+                height: 230px;
+
+                float: none;
+
+                margin: 0 0 18px 0;
+            }
+
+            .resource-box {
+                padding: 20px;
+            }
+
+            .sidebar {
+                padding: 25px 18px;
+            }
+
+            .sidebar img {
+                height: 200px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="page">
+
+
+        <!-- =========================
+             LEFT SIDE - BLOG CONTENT
+        ========================== -->
+
+        <main class="content">
+
+            <div class="page-title">
+
+                <h1>
+                    Mountain Trekking Blog
+                </h1>
+
+                <p>
+                    Latest trekking, climbing and mountain updates
+                </p>
+
+            </div>
+
+
+            <!-- POST 1 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 6/25/2026
+                </h2>
+
+                <div class="date">
+                    Posted on June 25, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb1.jpg"
+                    alt="Cascades Mountain"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Hello climbers, Summer is in full swing here in the Cascades.
+                    Last week, we saw freezing levels above normal for this time
+                    of year, but we are about to shift to much cooler temperatures
+                    and slight amounts of precipitation in the coming week.
+                    We anticipate the frontal system to begin on Friday and
+                    persist until...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 2 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 6/18/2026
+                </h2>
+
+                <div class="date">
+                    Posted on June 18, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb2.jpg"
+                    alt="Mountain Trekking"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Hello climbers, Climbing conditions in the Cascades are
+                    shaping up beautifully as we head into the summer season.
+                    Recent warm weather has accelerated snow melt, opening access
+                    to more routes and improving conditions across many alpine
+                    objectives across the region. With the Summer Solstice just
+                    around the corner, we're enjoying the longest days of the...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 3 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Rainier Route Update 6/15/2026
+                </h2>
+
+                <div class="date">
+                    Posted on June 15, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb3.PNG"
+                    alt="Rainier Route"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Greetings Climbers, Happy Monday from Alpine Ascents!
+                    The past week on Mount Rainier has been a reminder of just
+                    how quickly conditions can change in the Cascades. Late last
+                    week, a strong storm moved through the region, depositing
+                    an estimated 2–3 feet of new snow above 10,000 feet.
+                    Guides reported winter-like conditions on the upper...
+                </p>
+
+                <a href="/anchor tag.html" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 4 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Grams, Gear, and Gastronomy
+                </h2>
+
+                <div class="date">
+                    Posted on June 12, 2026
+                </div>
+
+                <span class="category">
+                    Blog
+                </span>
+
+                <img
+                    src="/images/mb4.jpg"
+                    alt="Mountain Gear"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Submission by Alpine Ascents Guide Max Lurie.
+                    Let's talk mountain cuisine and hydration, but more
+                    specifically cups, bowls, spoons, and other accoutrements.
+                    Climbers, mountaineers, and alpinists agonize over every
+                    gram of equipment, yet that meticulous planning often stops
+                    at the cook tent. Much like pasta shapes pair with specific
+                    sauces, changing our perception of flavor,...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 5 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 6/10/2026
+                </h2>
+
+                <div class="date">
+                    Posted on June 10, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb5.jpg"
+                    alt="Snow Mountain"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    While the calendar technically says June, the Cascades have
+                    recently been reminding climbers that winter is not quite
+                    ready to let go. Over the past week, Mount Rainier received
+                    nearly two inches of precipitation at Paradise in 36hrs!
+                    Much of that precipitation falls as snow at the higher
+                    elevations. Alpine Ascents guides reported significant new...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 6 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 6/3/2026
+                </h2>
+
+                <div class="date">
+                    Posted on June 3, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb6.jpg"
+                    alt="Mountain Climbers"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    The Cascades climbing season continues to move forward,
+                    with teams enjoying generally favorable weather and good
+                    climbing conditions throughout much of the state. Guides
+                    are beginning to observe the seasonal changes that come
+                    with warmer temperatures and longer days. The current
+                    forecast suggests continued periods of stable weather
+                    intermixed with typical spring systems moving through...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 7 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 5/28/2026
+                </h2>
+
+                <div class="date">
+                    Posted on May 28, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb7.jpg"
+                    alt="Mountain Landscape"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Hello climbers, The past week has brought a mix of classic
+                    spring Cascade conditions, with warm temperatures early in
+                    the week followed by a return to cooler weather, stronger
+                    winds, and periods of precipitation across the range.
+                    While snowpack remains below average for this time of year,
+                    climbers continue to find good climbing conditions on...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 8 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 5/21/2026
+                </h2>
+
+                <div class="date">
+                    Posted on May 21, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb8.jpg"
+                    alt="Mountain Expedition"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Greetings Fellow Climbers, The Cascades climbing season is
+                    in full swing! This is our favorite time of year as we have
+                    climbers exploring all over the Pacific Northwest. In
+                    addition to our climbs in Cascades we also have several
+                    expeditions already deep in the Alaska range making moves
+                    up Denali. Internationally, our Everest expedition led...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 9 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 5/13/2026
+                </h2>
+
+                <div class="date">
+                    Posted on May 13, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb9.jpg"
+                    alt="Mountain Climbing"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Greetings Fellow Climbers, The Cascades climbing season is
+                    now fully underway, and overall climbing conditions across
+                    Washington remain quite good for mid-May. Over the past two
+                    weeks, our teams have been active on Mount Rainier, Mount
+                    Baker, and throughout the Cascades, with guides reporting
+                    generally favorable travel conditions, strong route coverage
+                    on the upper mountains,...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- POST 10 -->
+
+            <article class="blog-card">
+
+                <h2>
+                    Cascades Conditions Report 5/6/2026
+                </h2>
+
+                <div class="date">
+                    Posted on May 6, 2026
+                </div>
+
+                <span class="category">
+                    Blog | Cybercasts
+                </span>
+
+                <img
+                    src="/images/mb10.jpg"
+                    alt="Mountain Summit"
+                    class="blog-image"
+                >
+
+                <p class="description">
+                    Rainier is in Full Swing! This past week has been a gorgeous
+                    one here in the PNW with ample sunny skies across the region.
+                    Our guides have been calling in great conditions from all
+                    around the state, with lots of people climbing and skiing
+                    off the tops of the peak in the Cascades. As a...
+                </p>
+
+                <a href="#" class="read-more">
+                    Read More
+                </a>
+
+                <div class="clear"></div>
+
+            </article>
+
+
+            <!-- =========================
+                 WASHINGTON RESOURCES
+            ========================== -->
+
+            <section class="resource-box" id="washington">
+
+                <h2>
+                    Washington Climbing Resources
+                </h2>
+
+                <p>
+                    Explore mountain climbing resources, Rainier updates,
+                    Cascades information, weather reports, webcams and
+                    expedition cybercasts.
+                </p>
+
+            </section>
+
+
+            <!-- RAINIER UPDATES -->
+
+            <section class="resource-box" id="rainier-updates">
+
+                <h2>
+                    Rainier Updates From Our Teams
+                </h2>
+
+                <p>
+                    <a
+                        href="https://www.alpineascents.com/cybercast/mount_rainier_cascades_blog/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Alpine Ascents Rainier/Cascades Cybercast
+                    </a>
+                </p>
+
+            </section>
+
+
+            <!-- RAINIER RESOURCES -->
+
+            <section class="resource-box" id="rainier-resources">
+
+                <h2>
+                    Other Rainier Resources
+                </h2>
+
+                <ul class="resource-list">
+
+                    <li>
+                        <a
+                            href="https://mountrainierclimbing.blogspot.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Mount Rainier Climbing Condition Report
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://a.atmos.washington.edu/data/rainier_report.html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Mount Rainier Weather Forecast
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://www.nps.gov/mora/learn/photosmultimedia/webcams.htm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Mount Rainier Web Cams
+                        </a>
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- CASCADES -->
+
+            <section class="resource-box" id="cascades">
+
+                <h2>
+                    Cascades Resources
+                </h2>
+
+                <ul class="resource-list">
+
+                    <li>
+                        <a
+                            href="https://forecast.weather.gov/MapClick.php?lat=48.74119146411796&lon=-121.8412971496582&site=sew&smap=1&marine=0&unit=0&lg=en"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Point Forecast for Baker Camp
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://www.nps.gov/noca/blogs/climbing-conditions-other.htm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            North Cascade Climbing Condition Report
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://forecast.weather.gov/MapClick.php?lon=-121.061&lat=48.512"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            North Cascade Zone Area Forecast
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://www.nps.gov/subjects/air/webcams.htm?site=noca"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            North Cascade Webcam
+                        </a>
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- CYBERCASTS -->
+
+            <section class="resource-box" id="cybercasts">
+
+                <h2>
+                    Cybercasts
+                </h2>
+
+                <p class="cybercast-text">
+                    Alpine Ascents provides family and friends the opportunity
+                    to follow climbs as they proceed. Regular audio dispatches
+                    can be posted online so viewers can follow mountain teams
+                    during expeditions.
+                </p>
+
+                <p class="cybercast-text">
+                    Archived Cybercasts can also be useful when researching
+                    expeditions, climbing routes and mountain adventures.
+                </p>
+
+                <a
+                    href="https://www.alpineascents.com/cybercast/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="recent-link"
+                >
+                    Recent Cybercasts
+                </a>
+
+            </section>
+
+
+            <!-- TAGS -->
+
+            <section class="resource-box" id="tags">
+
+                <h2>
+                    Tags
+                </h2>
+
+                <div class="tags">
+
+                    <a class="tag" href="#">Aconcagua</a>
+                    <a class="tag" href="#">Alaska</a>
+                    <a class="tag" href="#">Alps</a>
+                    <a class="tag" href="#">Antarctica</a>
+                    <a class="tag" href="#">Bhutan</a>
+                    <a class="tag" href="#">Carstensz Pyramid</a>
+                    <a class="tag" href="#">Cerro San Lorenzo</a>
+                    <a class="tag" href="#">Denali</a>
+                    <a class="tag" href="#">Dispatches</a>
+                    <a class="tag" href="#">Everest</a>
+                    <a class="tag" href="#">Everest Base Camp Trek</a>
+                    <a class="tag" href="#">Gear</a>
+                    <a class="tag" href="#">Great Peaks of Bolivia</a>
+                    <a class="tag" href="#">Great Peaks of Peru</a>
+                    <a class="tag" href="#">Indonesia</a>
+                    <a class="tag" href="#">Island Peak</a>
+                    <a class="tag" href="#">Lemosho</a>
+                    <a class="tag" href="#">Machame</a>
+                    <a class="tag" href="#">Machu Picchu</a>
+                    <a class="tag" href="#">Matterhorn</a>
+                    <a class="tag" href="#">Mera Peak</a>
+                    <a class="tag" href="#">Mongolia</a>
+                    <a class="tag" href="#">Mountaineering School</a>
+                    <a class="tag" href="#">Mount Baker</a>
+                    <a class="tag" href="#">Mount Elbrus</a>
+                    <a class="tag" href="#">Mount Kilimanjaro</a>
+                    <a class="tag" href="#">Mount Rainier</a>
+                    <a class="tag" href="#">Mount Vinson</a>
+                    <a class="tag" href="#">Nepal</a>
+                    <a class="tag" href="#">Patagonia</a>
+                    <a class="tag" href="#">Peru</a>
+                    <a class="tag" href="#">Pro Tips</a>
+                    <a class="tag" href="#">Rock Climbing</a>
+                    <a class="tag" href="#">RSS Blog</a>
+                    <a class="tag" href="#">Seven Summits</a>
+                    <a class="tag" href="#">TAPS</a>
+                    <a class="tag" href="#">Treks</a>
+                    <a class="tag" href="#">Uncategorized</a>
+                    <a class="tag" href="#">Vacas Valley</a>
+                    <a class="tag" href="#">Volcanoes of Ecuador</a>
+                    <a class="tag" href="#">Volcanoes of Mexico</a>
+                    <a class="tag" href="#">Yak Trek</a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================
+             RIGHT SIDE SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <h2>
+                Mountain Resources
+            </h2>
+
+            <img
+                src="/images/mountain-blog-1.png"
+                alt="Mountain Resources"
+            >
+
+
+            <div class="sidebar-section">
+
+                <h3>
+                    Washington
+                </h3>
+
+                <a href="#washington">
+                    Washington Climbing Resources
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <h3>
+                    Rainier
+                </h3>
+
+                <a href="#rainier-updates">
+                    Rainier Updates
+                </a>
+
+                <a href="#rainier-resources">
+                    Other Rainier Resources
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <h3>
+                    Cascades
+                </h3>
+
+                <a href="#cascades">
+                    Cascades Resources
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <h3>
+                    Cybercasts
+                </h3>
+
+                <a href="#cybercasts">
+                    Cybercasts
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <h3>
+                    Explore
+                </h3>
+
+                <a href="#tags">
+                    Mountain Tags
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <h3>
+                    Quick Navigation
+                </h3>
+
+                <a href="#washington">
+                    🏔 Washington
+                </a>
+
+                <a href="#rainier-updates">
+                    ❄ Rainier Updates
+                </a>
+
+                <a href="#cascades">
+                    🗻 Cascades
+                </a>
+
+                <a href="#cybercasts">
+                    🎙 Cybercasts
+                </a>
+
+                <a href="#tags">
+                    🏷 Mountain Tags
+                </a>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</body>
+
+</html>
+

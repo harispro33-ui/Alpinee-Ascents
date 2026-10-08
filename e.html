@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adventure Packages | Alpine Ascents</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =====================================================
+           ALPINE ASCENTS THEME
+        ===================================================== */
+
+        :root {
+            --charcoal: #363636;
+            --orange: #ff5b0a;
+            --orange-hover: #e94f05;
+            --navy: #071b2c;
+            --blue-gray: #16394f;
+            --blue-heading: #174364;
+            --light-bg: #eef2f4;
+            --white: #ffffff;
+            --text: #555;
+            --border: #dfe4e7;
+        }
+
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1f2937;
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+        /* =====================================================
+           PACKAGES SECTION
+        ===================================================== */
+
+        .packages-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 48px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 55px;
+            height: 3px;
+            background-color: var(--orange);
+            margin: 14px auto 0;
+            border-radius: 5px;
+        }
+
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(320px, 1fr)
+            );
+            gap: 28px;
+        }
+
+
+        /* =====================================================
+           PACKAGE CARD
+        ===================================================== */
+
+        .package-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+
+            display: flex;
+            flex-direction: column;
+
+            border-radius: 15px;
+            overflow: hidden;
+
+            box-shadow: 0 8px 25px rgba(7, 27, 44, 0.07);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 18px 35px rgba(7, 27, 44, 0.16);
+
+            border-color: rgba(255, 91, 10, 0.35);
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .image-wrapper {
+            width: 100%;
+            height: 240px;
+
+            overflow: hidden;
+            background-color: var(--light-bg);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.5s ease;
+        }
+
+        .package-card:hover .image-wrapper img {
+            transform: scale(1.05);
+        }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .card-content {
+            padding: 24px;
+
+            display: flex;
+            flex-direction: column;
+
+            flex-grow: 1;
+        }
+
+        .package-title {
+            font-size: 19px;
+            color: var(--blue-heading);
+
+            line-height: 1.45;
+            margin-bottom: 12px;
+
+            font-weight: 700;
+        }
+
+        .package-date {
+            font-size: 15px;
+            color: #666;
+
+            margin-bottom: 24px;
+            margin-top: auto;
+
+            font-weight: 600;
+        }
+
+        .package-date::before {
+            content: "• ";
+
+            color: var(--orange);
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           BOOK BUTTON
+        ===================================================== */
+
+        .book-btn {
+            background-color: var(--orange);
+            color: #ffffff;
+
+            border: 1px solid var(--orange);
+
+            padding: 14px 24px;
+
+            font-size: 13px;
+
+            font-family:
+                'Plus Jakarta Sans',
+                sans-serif;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            width: 100%;
+
+            font-weight: 700;
+
+            border-radius: 6px;
+
+            transition: all 0.25s ease;
+        }
+
+        .book-btn:hover {
+            background-color: var(--navy);
+            border-color: var(--navy);
+        }
+
+
+        /* =====================================================
+           EXPERIENCE MODAL
+        ===================================================== */
+
+        .experience-modal {
+            position: fixed;
+            inset: 0;
+
+            background:
+                rgba(7, 27, 44, 0.82);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 9999;
+
+            backdrop-filter: blur(5px);
+        }
+
+        .experience-modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 520px;
+
+            background: var(--white);
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 60px
+                rgba(0, 0, 0, 0.3);
+
+            animation:
+                modalIn 0.25s ease;
+        }
+
+        @keyframes modalIn {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(20px)
+                    scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 230px;
+
+            object-fit: cover;
+        }
+
+        .modal-content {
+            padding: 28px;
+        }
+
+        .modal-content h2 {
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-size: 28px;
+
+            color: var(--navy);
+
+            margin-bottom: 12px;
+        }
+
+        .modal-price {
+            color: var(--orange);
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .modal-description {
+            color: #666;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+            margin-bottom: 24px;
+        }
+
+        .modal-close {
+            width: 100%;
+
+            border: none;
+
+            background: var(--orange);
+
+            color: white;
+
+            padding: 13px 20px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            transition: 0.25s;
+        }
+
+        .modal-close:hover {
+            background: var(--navy);
+        }
+
+
+        /* =====================================================
+           DEMO BOOKING DOCUMENT
+        ===================================================== */
+
+        .booking-document-overlay {
+            position: fixed;
+            inset: 0;
+
+            background:
+                rgba(7, 27, 44, 0.82);
+
+            backdrop-filter: blur(6px);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 10000;
+        }
+
+        .booking-document-overlay.show {
+            display: flex;
+        }
+
+        .booking-document {
+            width: 100%;
+            max-width: 650px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: var(--white);
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.3);
+
+            animation:
+                bookingOpen 0.25s ease;
+        }
+
+        @keyframes bookingOpen {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px)
+                    scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =====================================================
+           BOOKING HEADER
+        ===================================================== */
+
+        .booking-header {
+            background: var(--charcoal);
+
+            color: white;
+
+            padding: 26px 30px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+        }
+
+        .booking-logo {
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-size: 25px;
+        }
+
+        .booking-status {
+            background: var(--orange);
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =====================================================
+           BOOKING BODY
+        ===================================================== */
+
+        .booking-body {
+            padding: 32px;
+        }
+
+        .booking-title {
+            color: var(--navy);
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+        }
+
+        .booking-subtitle {
+            color: #6b7280;
+
+            font-size: 13px;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =====================================================
+           BOOKING INFORMATION
+        ===================================================== */
+
+        .booking-info {
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            margin-bottom: 25px;
+        }
+
+        .booking-row {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+            padding: 15px 18px;
+
+            border-bottom:
+                1px solid #eeeeee;
+        }
+
+        .booking-row:last-child {
+            border-bottom: none;
+        }
+
+        .booking-label {
+            color: #6b7280;
+
+            font-size: 13px;
+        }
+
+        .booking-value {
+            color: var(--blue-gray);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           PRICE
+        ===================================================== */
+
+        .booking-price {
+            background: #f5f7f9;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+            border-left: 4px solid var(--orange);
+        }
+
+        .booking-price span:first-child {
+            color: var(--blue-gray);
+
+            font-weight: 600;
+        }
+
+        .booking-price strong {
+            color: var(--orange);
+
+            font-size: 22px;
+        }
+
+
+        /* =====================================================
+           DEMO NOTICE
+        ===================================================== */
+
+        .booking-notice {
+            padding: 15px 17px;
+
+            border-left:
+                4px solid var(--orange);
+
+            background: #fff7f2;
+
+            color: #5f6368;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+
+            border-radius: 4px;
+        }
+
+
+        /* =====================================================
+           BOOKING BUTTONS
+        ===================================================== */
+
+        .booking-actions {
+            display: flex;
+
+            gap: 12px;
+        }
+
+        .booking-print,
+        .booking-close {
+            flex: 1;
+
+            padding: 13px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            font-family: inherit;
+
+            transition: 0.25s;
+        }
+
+        .booking-print {
+            background: var(--orange);
+
+            border:
+                1px solid var(--orange);
+
+            color: white;
+        }
+
+        .booking-close {
+            background: var(--charcoal);
+
+            border:
+                1px solid var(--charcoal);
+
+            color: white;
+        }
+
+        .booking-print:hover {
+            background: var(--navy);
+            border-color: var(--navy);
+        }
+
+        .booking-close:hover {
+            background: var(--navy);
+            border-color: var(--navy);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .packages-container {
+                margin: 40px auto;
+
+                padding: 0 16px;
+            }
+
+            .section-title {
+                font-size: 31px;
+
+                margin-bottom: 35px;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+            }
+
+            .modal-content {
+                padding: 22px;
+            }
+
+            .modal-image {
+                height: 190px;
+            }
+
+            .booking-body {
+                padding: 22px;
+            }
+
+            .booking-header {
+                padding: 20px;
+            }
+
+            .booking-title {
+                font-size: 25px;
+            }
+
+            .booking-row {
+                flex-direction: column;
+
+                gap: 5px;
+            }
+
+            .booking-value {
+                text-align: left;
+            }
+
+            .booking-actions {
+                flex-direction: column;
+            }
+
+        }
+
+
+        /* =====================================================
+           PRINT-ONLY BOOKING DOCUMENT
+        ===================================================== */
+
+        @media print {
+
+            body * {
+                visibility: hidden !important;
+            }
+
+            #bookingDocument,
+            #bookingDocument * {
+                visibility: visible !important;
+            }
+
+            #bookingDocument {
+                position: absolute !important;
+
+                inset: 0 !important;
+
+                display: block !important;
+
+                background: white !important;
+
+                padding: 0 !important;
+
+                margin: 0 !important;
+
+                backdrop-filter: none !important;
+            }
+
+            #bookingPaper {
+                position: relative !important;
+
+                width: 100% !important;
+
+                max-width: none !important;
+
+                max-height: none !important;
+
+                overflow: visible !important;
+
+                margin: 0 !important;
+
+                border-radius: 0 !important;
+
+                box-shadow: none !important;
+
+                animation: none !important;
+            }
+
+            .booking-header {
+                padding: 25px 30px !important;
+
+                -webkit-print-color-adjust:
+                    exact !important;
+
+                print-color-adjust:
+                    exact !important;
+            }
+
+            .booking-body {
+                padding: 35px !important;
+            }
+
+            .booking-actions {
+                display: none !important;
+            }
+
+            .booking-info,
+            .booking-row,
+            .booking-price,
+            .booking-notice {
+                -webkit-print-color-adjust:
+                    exact !important;
+
+                print-color-adjust:
+                    exact !important;
+            }
+
+            .booking-info,
+            .booking-price,
+            .booking-notice {
+                break-inside: avoid !important;
+
+                page-break-inside:
+                    avoid !important;
+            }
+
+            * {
+                text-shadow: none !important;
+            }
+
+            @page {
+                size: A4;
+
+                margin: 12mm;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PACKAGES
+    ===================================================== -->
+
+    <div class="packages-container">
+
+        <h2 class="section-title">
+            Exclusive Mountain Experiences
+        </h2>
+
+
+        <div class="packages-grid">
+
+
+            <!-- CARD 1 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/bunjee-jumping.jpg"
+                        alt="Bungee Jumping">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Bungee Jumping in Mountains
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $400
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Bungee Jumping in Mountains',
+                            '$400'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/hiking.jpg"
+                        alt="Hiking">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Hiking with Absolute Safety
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $350
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Hiking with Absolute Safety',
+                            '$350'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/zipline.jpg"
+                        alt="Zipline">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Zipline Between Mountain Peaks
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $550
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Zipline Between Mountain Peaks',
+                            '$550'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 4 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/cycling.jpg"
+                        alt="Bicycling">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Bi-cycling Through Mountain Trails
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $400
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Bi-cycling Through Mountain Trails',
+                            '$400'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 5 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/ice-sliding.jpg"
+                        alt="Ice Sliding">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Winter Ice Sliding Adventures
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $350
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Winter Ice Sliding Adventures',
+                            '$350'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 6 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/overnight.jpg"
+                        alt="Overnight Camping">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Premium Overnight Adventures
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $550
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Premium Overnight Adventures',
+                            '$550'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 7 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/rock-climbing.jpg"
+                        alt="Rock Climbing">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Guided Rock-Climbing
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $400
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Guided Rock-Climbing',
+                            '$400'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 8 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/hiker.jpg"
+                        alt="Hiking">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Alpine Hiking Expeditions
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $350
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Alpine Hiking Expeditions',
+                            '$350'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 9 -->
+
+            <div class="package-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="/images/chim.jpg"
+                        alt="Chimborazo">
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3 class="package-title">
+                        Adventure on Chimborazo
+                    </h3>
+
+                    <p class="package-date">
+                        Price: $550
+                    </p>
+
+                    <button
+                        class="book-btn"
+                        onclick="createDemoBooking(
+                            'Adventure on Chimborazo',
+                            '$550'
+                        )">
+
+                        Book Experience
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         EXPERIENCE INFORMATION MODAL
+    ===================================================== -->
+
+    <div
+        class="experience-modal"
+        id="experienceModal">
+
+        <div class="modal-box">
+
+            <img
+                id="modalImage"
+                class="modal-image"
+                src=""
+                alt="Experience">
+
+
+            <div class="modal-content">
+
+                <h2 id="modalTitle"></h2>
+
+                <p
+                    class="modal-price"
+                    id="modalPrice">
+                </p>
+
+
+                <p class="modal-description">
+
+                    Explore this adventure experience
+                    and learn more about its highlights,
+                    environment, and available details.
+
+                    Please review the experience information
+                    before making any decisions.
+
+                </p>
+
+
+                <button
+                    class="modal-close"
+                    onclick="closeExperience()">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DEMO BOOKING DOCUMENT
+    ===================================================== -->
+
+    <div
+        class="booking-document-overlay"
+        id="bookingDocument">
+
+
+        <div
+            class="booking-document"
+            id="bookingPaper">
+
+
+            <!-- HEADER -->
+
+            <div class="booking-header">
+
+                <div class="booking-logo">
+                    Alpine Ascents
+                </div>
+
+                <div class="booking-status">
+                    DEMO CONFIRMATION
+                </div>
+
+            </div>
+
+
+            <!-- BODY -->
+
+            <div class="booking-body">
+
+
+                <h2 class="booking-title">
+                    Booking Confirmation
+                </h2>
+
+
+                <p class="booking-subtitle">
+
+                    Adventure Experience
+                    Reservation Document
+
+                </p>
+
+
+                <!-- INFORMATION -->
+
+                <div class="booking-info">
+
+
+                    <div class="booking-row">
+
+                        <span class="booking-label">
+                            Booking ID
+                        </span>
+
+                        <span
+                            class="booking-value"
+                            id="bookingID">
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="booking-row">
+
+                        <span class="booking-label">
+                            Experience
+                        </span>
+
+                        <span
+                            class="booking-value"
+                            id="bookingExperience">
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="booking-row">
+
+                        <span class="booking-label">
+                            Booking Date
+                        </span>
+
+                        <span
+                            class="booking-value"
+                            id="bookingDate">
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="booking-row">
+
+                        <span class="booking-label">
+                            Participants
+                        </span>
+
+                        <span class="booking-value">
+                            1 Participant
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="booking-row">
+
+                        <span class="booking-label">
+                            Status
+                        </span>
+
+                        <span class="booking-value">
+                            Demo / Not Reserved
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- PRICE -->
+
+                <div class="booking-price">
+
+                    <span>
+                        Display Price
+                    </span>
+
+                    <strong id="bookingPrice">
+                        $0
+                    </strong>
+
+                </div>
+
+
+                <!-- NOTICE -->
+
+                <div class="booking-notice">
+
+                    This document is a demonstration
+                    confirmation generated for website
+                    presentation purposes.
+
+                    It does not represent a real reservation,
+                    payment, ticket, or confirmed booking.
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="booking-actions">
+
+                    <button
+                        class="booking-print"
+                        onclick="printBooking()">
+
+                        Print Document
+
+                    </button>
+
+
+                    <button
+                        class="booking-close"
+                        onclick="closeBooking()">
+
+                        Close
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /* =====================================================
+           EXPERIENCE MODAL
+        ===================================================== */
+
+        function showExperience(
+            title,
+            price,
+            image
+        ) {
+
+            document.getElementById(
+                "modalTitle"
+            ).textContent = title;
+
+
+            document.getElementById(
+                "modalPrice"
+            ).textContent =
+                "Experience Price: " + price;
+
+
+            document.getElementById(
+                "modalImage"
+            ).src = image;
+
+
+            document.getElementById(
+                "experienceModal"
+            ).classList.add("show");
+
+        }
+
+
+        function closeExperience() {
+
+            document.getElementById(
+                "experienceModal"
+            ).classList.remove("show");
+
+        }
+
+
+
+        /* =====================================================
+           DEMO BOOKING
+        ===================================================== */
+
+        function createDemoBooking(
+            title,
+            price
+        ) {
+
+            /* Generate demo booking number */
+
+            const randomNumber =
+                Math.floor(
+                    100000 +
+                    Math.random() * 900000
+                );
+
+
+            document.getElementById(
+                "bookingID"
+            ).textContent =
+                "AA-DEMO-" + randomNumber;
+
+
+            /* Experience */
+
+            document.getElementById(
+                "bookingExperience"
+            ).textContent = title;
+
+
+            /* Price */
+
+            document.getElementById(
+                "bookingPrice"
+            ).textContent = price;
+
+
+            /* Current date */
+
+            const today =
+                new Date();
+
+
+            const formattedDate =
+                today.toLocaleDateString(
+                    "en-US",
+                    {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+                    }
+                );
+
+
+            document.getElementById(
+                "bookingDate"
+            ).textContent =
+                formattedDate;
+
+
+            /* Show document */
+
+            document.getElementById(
+                "bookingDocument"
+            ).classList.add("show");
+
+        }
+
+
+
+        /* =====================================================
+           CLOSE BOOKING
+        ===================================================== */
+
+        function closeBooking() {
+
+            document.getElementById(
+                "bookingDocument"
+            ).classList.remove("show");
+
+        }
+
+
+
+        /* =====================================================
+           PRINT BOOKING
+        ===================================================== */
+
+        function printBooking() {
+
+            window.print();
+
+        }
+
+
+
+        /* =====================================================
+           CLOSE EXPERIENCE MODAL
+        ===================================================== */
+
+        document.getElementById(
+            "experienceModal"
+        ).addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === this
+                ) {
+
+                    closeExperience();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CLOSE BOOKING BY OUTSIDE CLICK
+        ===================================================== */
+
+        document.getElementById(
+            "bookingDocument"
+        ).addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === this
+                ) {
+
+                    closeBooking();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ESCAPE KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeExperience();
+
+                    closeBooking();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

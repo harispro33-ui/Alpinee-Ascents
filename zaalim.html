@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Alpine Ascents</title>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Open+Sans:wght@400;500;600&display=swap"
+rel="stylesheet">
+
+<style>
+
+/* ================= BASIC ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    color: #333;
+    background: #eef2f4;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* ================= MAIN ================= */
+
+.main-wrapper {
+    min-height: 100vh;
+}
+
+
+/* ================= TOP HEADER ================= */
+
+.top-header {
+    background: #03111d;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.top-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-container a {
+    color: white;
+    margin-left: 20px;
+    transition: .3s;
+}
+
+.top-container a:hover {
+    color: #ff5b0a;
+}
+
+
+/* ================= MAIN HEADER ================= */
+
+.main-header {
+    background: #363636;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    min-height: 85px;
+    margin: auto;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: white;
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+}
+
+.logo-main {
+    font-size: 29px;
+    line-height: 25px;
+}
+
+.logo-sub {
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: #ff5b0a;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    font-family: "Oswald", sans-serif;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #ff5b0a;
+}
+
+.book-button {
+    background: #ff5b0a;
+    color: white !important;
+    padding: 12px 17px;
+    border-radius: 4px;
+}
+
+.book-button:hover {
+    background: #071b2c !important;
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: 0;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    height: 470px;
+
+    background-image:
+        linear-gradient(rgba(7,27,44,.62), rgba(7,27,44,.62)),
+        url("images/mountain.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    z-index: 2;
+}
+
+.hero-content p {
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 3px;
+    font-size: 15px;
+    color: #ff5b0a;
+}
+
+.hero-content h1 {
+    font-family: "Oswald", sans-serif;
+    font-size: 68px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin: 10px 0;
+}
+
+.hero-content span {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+
+/* ================= COMMON ================= */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section {
+    padding: 85px 20px;
+}
+
+.heading {
+    margin-bottom: 45px;
+}
+
+.heading > span {
+    color: #ff5b0a;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.heading h2 {
+    color: #071b2c;
+    font-family: "Oswald", sans-serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.2;
+
+    max-width: 650px;
+    margin-top: 8px;
+}
+
+.line {
+    width: 55px;
+    height: 4px;
+    background: #ff5b0a;
+    margin-top: 18px;
+    border-radius: 3px;
+}
+
+.center {
+    text-align: center;
+}
+
+.center h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center .line {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ================= ABOUT ================= */
+
+.about {
+    background: #ffffff;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border: 5px solid #ff5b0a;
+
+    top: 15px;
+    left: 15px;
+
+    z-index: 0;
+}
+
+.about-image img {
+    position: relative;
+    z-index: 1;
+
+    height: 430px;
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.16);
+}
+
+.about-content p {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 17px;
+}
+
+.orange-btn {
+    display: inline-block;
+
+    background: #ff5b0a;
+    color: white;
+
+    padding: 13px 21px;
+
+    font-family: "Oswald", sans-serif;
+    font-size: 14px;
+
+    margin-top: 8px;
+
+    border-radius: 4px;
+
+    transition: .3s;
+}
+
+.orange-btn:hover {
+    background: #071b2c;
+}
+
+
+/* ================= VALUES ================= */
+
+.values {
+    background: #eef2f4;
+}
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.value-card {
+    background: white;
+
+    padding: 35px 23px;
+
+    text-align: center;
+
+    border-top: 4px solid transparent;
+
+    border-radius: 8px;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,.07);
+
+    transition: .3s;
+}
+
+.value-card:hover {
+    transform: translateY(-7px);
+
+    border-top-color: #ff5b0a;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.12);
+}
+
+.icon {
+    color: #ff5b0a;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+.value-card h3 {
+    font-family: "Oswald", sans-serif;
+
+    color: #071b2c;
+
+    font-size: 20px;
+
+    margin-bottom: 13px;
+}
+
+.value-card p {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* ================= MISSION ================= */
+
+.mission {
+    height: 430px;
+
+    background-image:
+        linear-gradient(rgba(7,27,44,.76), rgba(7,27,44,.76)),
+        url("images/climbing.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.mission-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 750px;
+
+    padding: 25px;
+
+    color: white;
+}
+
+.mission-content span {
+    color: #ff5b0a;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+}
+
+.mission-content h2 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 44px;
+
+    font-weight: 500;
+
+    margin: 15px 0;
+}
+
+.mission-content p {
+    line-height: 1.9;
+
+    font-size: 16px;
+}
+
+
+/* ================= HISTORY ================= */
+
+.history {
+    background: white;
+}
+
+.history-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 55px;
+
+    align-items: center;
+}
+
+.history-image img {
+    height: 400px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.12);
+}
+
+.history-text p {
+    color: #555;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    margin-bottom: 17px;
+}
+
+.timeline {
+    margin-top: 65px;
+
+    border-left: 3px solid #ff5b0a;
+
+    padding-left: 35px;
+}
+
+.timeline-item {
+    display: flex;
+
+    gap: 30px;
+
+    margin-bottom: 38px;
+
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+
+    width: 14px;
+    height: 14px;
+
+    background: #ff5b0a;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    left: -43px;
+
+    top: 5px;
+
+    box-shadow: 0 0 0 5px #fff;
+}
+
+.year {
+    font-family: "Oswald", sans-serif;
+
+    color: #ff5b0a;
+
+    font-size: 26px;
+
+    min-width: 70px;
+}
+
+.timeline-item h3 {
+    color: #071b2c;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 21px;
+}
+
+.timeline-item p {
+    color: #666;
+
+    font-size: 14px;
+
+    margin-top: 6px;
+
+    line-height: 1.6;
+}
+
+
+/* ================= ENVIRONMENT ================= */
+
+.environment {
+    background: #eef2f4;
+}
+
+.environment-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+.environment-grid > div:first-child > p {
+    color: #555;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    margin-bottom: 17px;
+}
+
+.environment-image {
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.13);
+}
+
+.environment-image img {
+    height: 400px;
+
+    object-fit: cover;
+}
+
+
+/* ================= CTA ================= */
+
+.cta {
+    background:
+        linear-gradient(rgba(7,27,44,.96), rgba(7,27,44,.96));
+
+    color: white;
+
+    text-align: center;
+
+    padding: 70px 20px;
+}
+
+.cta h2 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 40px;
+
+    font-weight: 500;
+}
+
+.cta p {
+    margin: 12px 0 22px;
+
+    color: #d7e0e5;
+}
+
+.white-button {
+    display: inline-block;
+
+    background: #ff5b0a;
+
+    color: white;
+
+    padding: 13px 22px;
+
+    font-family: "Oswald", sans-serif;
+
+    border-radius: 4px;
+
+    transition: .3s;
+}
+
+.white-button:hover {
+    background: white;
+
+    color: #071b2c;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #03111d;
+
+    color: white;
+}
+
+.footer-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 60px 20px;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1fr 1.4fr;
+
+    gap: 40px;
+}
+
+.footer-container h3 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+
+    color: white;
+}
+
+.footer-container h4 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 17px;
+
+    margin-bottom: 15px;
+
+    color: #ff5b0a;
+}
+
+.footer-container p {
+    color: #c5d2d8;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+.footer-container a {
+    display: block;
+
+    color: #c5d2d8;
+
+    font-size: 14px;
+
+    margin-bottom: 9px;
+
+    transition: .3s;
+}
+
+.footer-container a:hover {
+    color: #ff5b0a;
+}
+
+
+/* ================= NEWSLETTER ================= */
+
+#newsletter {
+    display: flex;
+
+    margin-top: 14px;
+}
+
+#newsletter input {
+    width: 100%;
+
+    border: 0;
+
+    outline: none;
+
+    padding: 11px;
+
+    border-radius: 4px 0 0 4px;
+}
+
+#newsletter button {
+    border: 0;
+
+    background: #ff5b0a;
+
+    color: white;
+
+    padding: 0 15px;
+
+    cursor: pointer;
+
+    border-radius: 0 4px 4px 0;
+
+    transition: .3s;
+}
+
+#newsletter button:hover {
+    background: #071b2c;
+}
+
+#message {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #ff9a70;
+}
+
+.copyright {
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,.12);
+
+    padding: 18px;
+
+    color: #b7c6cd;
+
+    font-size: 12px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px) {
+
+    .value-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media(max-width:800px) {
+
+    .main-wrapper {
+        margin-left: 0;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    nav {
+        display: none;
+
+        position: absolute;
+
+        left: 0;
+        right: 0;
+
+        top: 112px;
+
+        background: #363636;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        box-shadow: 0 10px 20px rgba(0,0,0,.25);
+
+        z-index: 100;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    .about-grid,
+    .history-grid,
+    .environment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .value-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-image img {
+        height: 380px;
+    }
+}
+
+
+@media(max-width:600px) {
+
+    .top-container {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+    }
+
+    .top-container a {
+        margin: 0 8px;
+    }
+
+    .hero {
+        height: 320px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content p {
+        font-size: 12px;
+    }
+
+    .heading h2 {
+        font-size: 30px;
+    }
+
+    .value-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-content h2 {
+        font-size: 32px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    #newsletter {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #newsletter input,
+    #newsletter button {
+        border-radius: 4px;
+        padding: 12px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .year {
+        min-width: auto;
+    }
+
+    .about-image img,
+    .history-image img,
+    .environment-image img {
+        height: 300px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="top-header">
+
+    <div class="top-container">
+
+        <span>
+            MOUNTAINEERING • CLIMBING • TREKKING
+        </span>
+
+        <div>
+            <a href="#">CONTACT</a>
+            <a href="#">BLOG</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="main-header">
+
+    <div class="header-container">
+
+        <div class="logo">
+
+            <div class="logo-main">
+                ALPINE
+            </div>
+
+            <div class="logo-sub">
+                ASCENTS
+            </div>
+
+        </div>
+
+
+        <button
+            class="menu-button"
+            id="menuButton">
+            ☰
+        </button>
+
+
+
+    </div>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+    <p>
+        ALPINE ASCENTS INTERNATIONAL
+    </p>
+
+    <h1>
+        ABOUT US
+    </h1>
+
+    <span>
+        MOUNTAINS • ADVENTURE • EXPLORATION
+    </span>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about section">
+
+<div class="container">
+
+    <div class="heading">
+
+        <span>
+            ABOUT ALPINE ASCENTS
+        </span>
+
+        <h2>
+            ABOUT OUR CLIMBS & MOUNTAINEERING SCHOOL
+        </h2>
+
+        <div class="line"></div>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="about-image">
+
+            <img
+            src="https://media.istockphoto.com/id/478326876/photo/climber-with-backpack.jpg?s=612x612&w=0&k=20&c=enbA6cdwbE5-0FyOtQTcX8lnIoObJGvTbXAiPcWFv9c="
+            alt="Mountain climbing">
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p>
+                Our reputation began in the Himalayas and quickly spread
+                to climbs around the globe.
+            </p>
+
+            <p>
+                Alpine Ascents provides mountaineering courses,
+                expeditions and climbing experiences for people who want
+                to explore challenging mountain environments.
+            </p>
+
+            <p>
+                Every expedition is carefully prepared. Routes,
+                logistics, provisions and risk management are considered
+                before a journey begins.
+            </p>
+
+            <p>
+                We believe that helping climbers achieve their personal
+                goals starts well before the climb itself.
+            </p>
+
+            <a href="#" class="orange-btn">
+                EXPLORE OUR CLIMBS
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= VALUES ================= -->
+
+<section class="values section">
+
+<div class="container">
+
+    <div class="heading center">
+
+        <span>
+            WHAT WE BELIEVE
+        </span>
+
+        <h2>
+            OUR APPROACH
+        </h2>
+
+        <div class="line"></div>
+
+    </div>
+
+
+    <div class="value-grid">
+
+        <div class="value-card">
+
+            <div class="icon">★</div>
+
+            <h3>
+                EXPERTISE
+            </h3>
+
+            <p>
+                Experienced mountain guides and carefully developed
+                climbing programs help climbers prepare for challenging
+                environments.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="icon">◆</div>
+
+            <h3>
+                INDIVIDUAL ATTENTION
+            </h3>
+
+            <p>
+                Personal attention is an important part of preparing
+                climbers for team-oriented expeditions.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="icon">▲</div>
+
+            <h3>
+                EXPLORATION
+            </h3>
+
+            <p>
+                We treat every expedition as a unique exploration and
+                encourage climbers to learn through experience.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="icon">♻</div>
+
+            <h3>
+                ENVIRONMENT
+            </h3>
+
+            <p>
+                Environmental responsibility and ethical travel are
+                important parts of mountain travel.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MISSION ================= -->
+
+<section class="mission">
+
+<div class="mission-content">
+
+    <span>
+        OUR MISSION
+    </span>
+
+    <h2>
+        DEVELOPING SELF-RELIANT MOUNTAINEERS
+    </h2>
+
+    <p>
+        Alpine Ascents is committed to developing risk-conscious,
+        self-reliant and environmentally-conscious mountaineers while
+        offering courses and expeditions throughout the world.
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- ================= HISTORY ================= -->
+
+<section class="history section">
+
+<div class="container">
+
+    <div class="heading">
+
+        <span>
+            OUR HISTORY
+        </span>
+
+        <h2>
+            A HISTORY OF MOUNTAIN EXPLORATION
+        </h2>
+
+        <div class="line"></div>
+
+    </div>
+
+
+    <div class="history-grid">
+
+        <div class="history-image">
+
+            <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGzK92Zd2Uj5iILL05JhKOuK2ezwsvfEOR8MriIW3wyk-Pc40THXo-8pVw&s=10"
+            alt="Alpine climbing">
+
+        </div>
+
+
+        <div class="history-text">
+
+            <p>
+                Alpine Ascents was founded in 1986 and developed from
+                a focus on international guiding and carefully planned
+                mountain expeditions.
+            </p>
+
+            <p>
+                Founder Todd Burleson developed an approach centered
+                around thoughtful route planning, camps, guide ratios,
+                supplies and itineraries.
+            </p>
+
+            <p>
+                From early Himalayan expeditions, this approach expanded
+                to mountains around the world.
+            </p>
+
+            <p>
+                Today Alpine Ascents continues to operate climbing
+                programs and expeditions in mountain environments around
+                the globe.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="year">
+                1986
+            </div>
+
+            <div>
+
+                <h3>
+                    THE BEGINNING
+                </h3>
+
+                <p>
+                    Alpine Ascents begins its journey in international
+                    mountain guiding.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="year">
+                2006
+            </div>
+
+            <div>
+
+                <h3>
+                    MOUNT RAINIER
+                </h3>
+
+                <p>
+                    Alpine Ascents was awarded a guiding concession on
+                    Mount Rainier.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="year">
+                2026
+            </div>
+
+            <div>
+
+                <h3>
+                    40 YEARS
+                </h3>
+
+                <p>
+                    Alpine Ascents begins its 40th year of operations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ENVIRONMENT ================= -->
+
+<section class="environment section">
+
+<div class="container">
+
+    <div class="environment-grid">
+
+        <div>
+
+            <div class="heading">
+
+                <span>
+                    ENVIRONMENTAL RESPONSIBILITY
+                </span>
+
+                <h2>
+                    PROTECTING THE MOUNTAINS WE LOVE
+                </h2>
+
+                <div class="line"></div>
+
+            </div>
+
+
+            <p>
+                Alpine Ascents states that Leave No Trace principles
+                are fundamental to its programs and that it encourages
+                climbers to understand proper wilderness practices.
+            </p>
+
+            <p>
+                The company also describes efforts related to waste
+                reduction, recycling, responsible equipment use and
+                environmental initiatives.
+            </p>
+
+            <a href="#" class="orange-btn">
+                LEARN MORE
+            </a>
+
+        </div>
+
+
+        <div class="environment-image">
+
+            <img
+            src="https://www.shutterstock.com/image-photo/team-climbers-walking-line-on-260nw-2716037801.jpg"
+            alt="Mountain expedition team">
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+<div class="container">
+
+    <h2>
+        START YOUR NEXT ADVENTURE
+    </h2>
+
+    <p>
+        Explore mountain courses and expeditions around the world.
+    </p>
+
+    <a href="#" class="white-button">
+        VIEW OUR PROGRAMS
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-container">
+
+    <div>
+
+        <h3>
+            ALPINE ASCENTS
+        </h3>
+
+        <p>
+            Mountain guiding, climbing education and expeditions around
+            the world.
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            EXPLORE
+        </h4>
+
+        <a href="#">Climbs</a>
+        <a href="#">Mountaineering School</a>
+        <a href="#">Treks</a>
+        <a href="#">Ski</a>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            COMPANY
+        </h4>
+
+        <a href="#">About Us</a>
+        <a href="#">Guide Staff</a>
+        <a href="#">Contact</a>
+        <a href="#">Blog</a>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            NEWSLETTER
+        </h4>
+
+        <p>
+            Receive climbing news and updates.
+        </p>
+
+        <form id="newsletter">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Your email"
+                required>
+
+            <button type="submit">
+                JOIN
+            </button>
+
+        </form>
+
+        <small id="message"></small>
+
+    </div>
+
+</div>
+
+
+<div class="copyright">
+
+    © 2026 Alpine Ascents International. All Rights Reserved.
+
+</div>
+
+
+</footer>
+
+</div>
+
+
+<script>
+
+/* ================= MOBILE NAV ================= */
+
+$("#menuButton").click(function () {
+
+    $("#navMenu").toggleClass("show");
+
+});
+
+
+/* ================= NEWSLETTER ================= */
+
+$("#newsletter").submit(function (e) {
+
+    e.preventDefault();
+
+    $("#message").text(
+        "Thank you for subscribing!"
+    );
+
+    $("#email").val("");
+
+});
+
+</script>
+
+</body>
+</html>
+
